@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gallery, Lara Berge Artworks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#F6F2EA}
+a{color:#3B3530;text-decoration:none}
+a:hover{color:#6E5268}
+:focus-visible{outline:2px solid #6E5268;outline-offset:3px}
+.nav a{position:relative;padding:10px 2px}
+.nav a::after{content:"";position:absolute;left:10%;right:10%;bottom:4px;height:6px;background:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3' fill='none' stroke='%239C7F94' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");opacity:0;transform:scaleX(.4);transition:opacity .3s,transform .4s}
+.nav a:hover::after,.nav a[aria-current]::after{opacity:1;transform:scaleX(1)}
+@keyframes sway{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(1.8deg)}}
+@keyframes swing{0%{transform:rotate(0)}20%{transform:rotate(7deg)}45%{transform:rotate(-5deg)}70%{transform:rotate(2.5deg)}100%{transform:rotate(0)}}
+@keyframes rustle{0%,100%{transform:rotate(0)}50%{transform:rotate(7deg)}}
+@keyframes dangle{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(10px) rotate(2deg)}60%{transform:translateY(4px) rotate(-2deg)}}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.spider{transform-origin:50% 0;animation:dangle 7s ease-in-out infinite}
+.sign{display:block;transform-origin:50% 3%;animation:sway 6s ease-in-out infinite}
+.sign:hover{animation:swing 1.1s ease-in-out}
+.sign img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 10px rgba(59,53,48,.18))}
+.rustle{transform-box:fill-box;transform-origin:0% 50%;animation:rustle 4.5s ease-in-out infinite}
+.tile{position:relative;overflow:hidden;display:block}
+.tile img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{transform:scale(1.035)}
+.tile .peek{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;background:linear-gradient(to top,rgba(34,29,26,.72),rgba(34,29,26,0));color:#FBF9F4;font-family:'IM Fell English',Georgia,serif;font-style:italic;font-size:18px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.tile:hover .peek,.tile:focus-visible .peek{opacity:1;transform:none}
+.panel{animation:fadeup .6s both}
+@media (prefers-reduced-motion: reduce){.sign,.rustle,.spider,.panel{animation:none!important}}
+</style>
+</helmet>
+<div style="background: #F6F2EA; color: #3B3530; font-family: 'Alegreya', Georgia, serif; font-size: 19px; line-height: 1.6; min-height: 100vh; overflow: hidden">
+
+  <dc-import name="Header" current="Gallery" cart="{{ 0 }}" hint-size="100%,190px"></dc-import>
+
+  <main>
+    <section aria-labelledby="gal-h" style="max-width: 760px; margin: 0 auto; padding: 36px 24px 0; text-align: center">
+      <h1 id="gal-h" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Gallery</h1>
+      <svg aria-hidden="true" viewBox="0 0 560 110" style="display: block; width: min(520px, 92%); height: auto; margin: 0 auto; position: relative; z-index: 2; overflow: visible">
+        <path d="M140 50 C 150 32, 168 24, 190 18" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M380 48 C 392 66, 410 76, 434 80" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M-6 44 C 90 38, 180 54, 280 48 C 380 42, 470 36, 552 28 L 554 32 C 470 44, 380 54, 280 58 C 180 64, 90 54, -6 60 Z" fill="#7A5E48" stroke="#3B2E25" stroke-width="2" stroke-linejoin="round"></path>
+        <path d="M30 52 q26 -4 52 0 M230 56 q30 -4 60 -1 M450 46 q24 -3 48 0" fill="none" stroke="#4E3B2E" stroke-width="1.2" stroke-linecap="round"></path>
+        <g stroke="#45512F" stroke-width="1.2" stroke-linejoin="round">
+          <g transform="translate(190 18) rotate(-25)"><g class="rustle"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(178 23) rotate(-100)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(164 30) rotate(-150)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(434 80) rotate(20)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(418 78) rotate(108)"><g class="rustle" style="animation-delay: -2s"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g></g>
+          <g transform="translate(90 48) rotate(-60)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#74835A"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(112 55) rotate(65)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(316 46) rotate(-55)"><g class="rustle" style="animation-delay: -1s"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(336 52) rotate(-125)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#8E9B6B"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(548 30) rotate(-20)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+        </g>
+        <g fill="#8C6A86" stroke="#4E3B4A" stroke-width="1"><circle cx="402" cy="66" r="4.2"></circle><circle cx="410" cy="72" r="3.6"></circle></g>
+      </svg>
+      <div aria-hidden="true" style="display: flex; justify-content: center; margin-top: -44px; position: relative; z-index: 1">
+        <span class="sign" style="width: 190px"><img src="/_blob/8fc6b36361fcb3922306a1fc633fb729" alt=""></span>
+      </div>
+      <p style="margin: 26px auto 0; max-width: 540px; color: #4E4640">Oil paintings, and digital illustrations drawn with a stylus. Tap any piece to see it up close.</p>
+    </section>
+
+    <section aria-label="Gallery sections" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 0">
+      <div role="tablist" aria-label="Choose a collection" style="display: flex; justify-content: center; gap: 8px 56px; flex-wrap: wrap; border-bottom: 1px solid #E1D8CB; margin-bottom: 44px">
+        <button type="button" role="tab" aria-selected="{{paintSel}}" onClick="{{showPaint}}" style="background: none; border: none; cursor: pointer; padding: 10px 6px 16px; min-height: 48px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-family: 'IM Fell English', Georgia, serif; color: #3B3530">
+          <span style="font-size: 30px; line-height: 1.1">Paintings</span>
+          <span style="font-family: 'Alegreya', Georgia, serif; font-size: 15px; color: #6F655D">oil on canvas · {{paintCount}}</span>
+          <sc-if value="{{isPaint}}" hint-placeholder-val="{{ true }}">
+            <svg aria-hidden="true" width="120" height="8" viewBox="0 0 60 6" style="margin-top: 6px"><path d="M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3" fill="none" stroke="#6E5268" stroke-width="1.4" stroke-linecap="round"></path></svg>
+          </sc-if>
+          <sc-if value="{{isDigital}}" hint-placeholder-val="{{ false }}"><span style="height: 14px"></span></sc-if>
+        </button>
+        <button type="button" role="tab" aria-selected="{{digitalSel}}" onClick="{{showDigital}}" style="background: none; border: none; cursor: pointer; padding: 10px 6px 16px; min-height: 48px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-family: 'IM Fell English', Georgia, serif; color: #3B3530">
+          <span style="font-size: 30px; line-height: 1.1">Digital illustration</span>
+          <span style="font-family: 'Alegreya', Georgia, serif; font-size: 15px; color: #6F655D">pixels &amp; ink · {{digitalCount}}</span>
+          <sc-if value="{{isDigital}}" hint-placeholder-val="{{ false }}">
+            <svg aria-hidden="true" width="120" height="8" viewBox="0 0 60 6" style="margin-top: 6px"><path d="M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3" fill="none" stroke="#6E5268" stroke-width="1.4" stroke-linecap="round"></path></svg>
+          </sc-if>
+          <sc-if value="{{isPaint}}" hint-placeholder-val="{{ true }}"><span style="height: 14px"></span></sc-if>
+        </button>
+      </div>
+
+      <sc-if value="{{isPaint}}" hint-placeholder-val="{{ true }}">
+        <div class="panel" role="tabpanel" aria-label="Paintings" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 56px 44px; align-items: start">
+          <sc-for list="{{paintings}}" as="p" hint-placeholder-count="6">
+            <article style="display: flex; flex-direction: column; gap: 14px">
+              <sc-if value="{{p.real}}" hint-placeholder-val="{{ true }}">
+                <a href="Lightbox.dc.html" class="tile" style="background: #FBF9F4; padding: 14px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)">
+                  <img src="{{p.src}}" alt="{{p.alt}}" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: {{p.pos}}">
+                </a>
+              </sc-if>
+              <sc-if value="{{p.slot}}" hint-placeholder-val="{{ false }}">
+                <div style="aspect-ratio: 4 / 5; border: 1px dashed #CFC4B5; display: flex; align-items: center; justify-content: center; color: #6F655D; font-style: italic; font-size: 17px; background: #FBF9F4">[Next painting]</div>
+              </sc-if>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+                <div>
+                  <h2 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 25px; line-height: 1.2">[Title]</h2>
+                  <p style="margin: 0; color: #6F655D; font-size: 16px">Oil on canvas · {{p.year}}</p>
+                </div>
+                <a href="Painting.dc.html" style="font-size: 16px; color: #6E5268; border-bottom: 1px solid #C9B6C3; white-space: nowrap">{{p.status}}</a>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isDigital}}" hint-placeholder-val="{{ false }}">
+        <div class="panel" role="tabpanel" aria-label="Digital illustration" style="columns: 4 230px; column-gap: 22px">
+          <sc-for list="{{digital}}" as="d" hint-placeholder-count="12">
+            <a href="Lightbox.dc.html" class="tile" style="break-inside: avoid; margin: 0 0 22px; box-shadow: 0 10px 22px -16px rgba(59,53,48,0.35)">
+              <img src="{{d.src}}" alt="{{d.alt}}" style="display: block; width: 100%; height: auto">
+              <span class="peek">view up close</span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+    </section>
+
+    <section aria-labelledby="cta-h" style="max-width: 1120px; margin: 110px auto 0; padding: 0 24px">
+      <div style="border-top: 1px solid #E1D8CB; border-bottom: 1px solid #E1D8CB; padding: 56px 0; display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between">
+        <div style="flex: 1 1 420px">
+          <h2 id="cta-h" style="margin: 0 0 8px; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.15">Fallen for something?</h2>
+          <p style="margin: 0; color: #4E4640">Most pieces come as signed fine art prints, and Lara takes commissions in both oil and digital.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center">
+          <a href="Prints.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; background: #6E5268; color: #FFFFFF; font-family: 'IM Fell English', Georgia, serif; font-size: 20px; border-radius: 2px">Shop prints</a>
+          <a href="Commissions.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 20px; color: #6E5268; min-height: 44px; display: inline-flex; align-items: center">commission a piece →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="Footer" cat="{{ true }}" hint-size="100%,220px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startTab":{"editor":"enum","options":["Paintings","Digital illustration"],"default":"Paintings"},"$preview":{"width":1440,"height":2960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const tab = this.state.tab ?? ((this.props.startTab ?? 'Paintings') === 'Paintings' ? 'paint' : 'digital');
+    const B = '/_blob/';
+    const paintings = [
+      { real: true, slot: false, src: B + 'fa7d32d443845cc0745ee11d251635ec', alt: 'Red-haired woman in profile cradling a glowing firefly, oil', pos: 'center', year: '2026', status: 'Original available' },
+      { real: true, slot: false, src: B + 'd58da7a179a91bd78f7623533600e4c5', alt: 'Woman in a red and violet gown holding a floating lantern in a dark wood, oil', pos: 'center top', year: '2026', status: 'Sold · prints' },
+      { real: true, slot: false, src: B + 'e2250f8ca86e80f5aa66cdf936e8e6b8', alt: 'Crooked pink cottage in a sunlit forest clearing with an iron bridge, oil', pos: '38% center', year: '2026', status: 'Original available' },
+      { real: false, slot: true, year: '[year]', status: '[status]' },
+      { real: false, slot: true, year: '[year]', status: '[status]' },
+      { real: false, slot: true, year: '[year]', status: '[status]' }
+    ];
+    const d = (id, alt) => ({ src: B + id, alt });
+    const digital = [
+      d('dc4744add1e1499fbf9ba3c04a36695f', 'Stag with glowing antlers in the snow'),
+      d('e2a22e94af8c30fb4825c97eb60d16bf', 'Woman lounging in a velvet chair while a spider dangles'),
+      d('a7de392dff37fc5258b508faaedaad01', 'Octopus holding a lantern in the deep sea'),
+      d('1d0894b7ffe3b99ebc154b3feaf00ab1', 'Girl in a pale dress holding a firefly in the dark'),
+      d('b0070e7931c8b3076e0fc8530920b008', 'Girl and bear sharing a tea picnic in autumn'),
+      d('84ae52b070977a2680f324a267729888', 'Mermaid diving among bubbles'),
+      d('ad2be2c7a67a4b1276991ec0c906ed60', 'Woman reading in a cluttered library full of cats'),
+      d('d5849a652f2c16f215a9e26cc9e916aa', 'Ghostly bride beside a candlelit mirror'),
+      d('6426f5ebf23bd709b7effe7813611f8e', 'A faun and a girl dancing under an eclipse'),
+      d('1190bbd85e6facb5639950ef62df5fa8', 'Woman with a lantern in a mossy forest'),
+      d('70b46e4b88950e5aeb95e6a18fead8f8', 'Mushrooms with sleepy faces and fireflies'),
+      d('05520859d3302f2e4515a16f80456157', 'Girl climbing out of a mirror holding a lamp'),
+      d('0e302867a26d3ee532f7bc788cdff85d', 'Woman on a balcony at night'),
+      d('9959cef201f88659c3cfa10182fce1d9', 'Children listening to a story by the fire'),
+      d('e7f8692c85b294f8167a3af17c7a7b5d', 'Girl reading in an armchair piled with cats'),
+      d('9ee0aade2991e408d9c48831c2d9218b', 'Fairy reading among leaves'),
+      d('8442b5e30ef7a0ee95bd61162b8d8483', 'A magician with a rabbit in his workshop'),
+      d('92e382e2ab4497c237d770b410b2114c', 'Witch on a broomstick before a full moon'),
+      d('31d0238a36a6488ce9819f3827991fb0', 'Lady in a pumpkin gown'),
+      d('dfee5dcf4e7a7b86308d8768a3de8727', 'Witch stirring a glowing green cauldron'),
+      d('a90e35a0c7058087bc31332783834118', 'Woman with a jack-o-lantern in a dark forest'),
+      d('83502507e12f4441b6909c6674e6875e', 'Woman in a Christmas-tree gown'),
+      d('6bbe1105149d86e1bee1d9f336d3669b', 'Small figure walking through giant tree roots'),
+      d('70b46e4b88950e5aeb95e6a18fead8f8', 'Mushroom village at dusk')
+    ].slice(0, 23);
+    return {
+      isPaint: tab === 'paint',
+      isDigital: tab === 'digital',
+      paintSel: tab === 'paint' ? 'true' : 'false',
+      digitalSel: tab === 'digital' ? 'true' : 'false',
+      showPaint: () => this.setState({ tab: 'paint' }),
+      showDigital: () => this.setState({ tab: 'digital' }),
+      paintings,
+      digital,
+      paintCount: '3 pieces',
+      digitalCount: digital.length + ' pieces'
+    };
+  }
+}
+</script>
+</body>
+</html>

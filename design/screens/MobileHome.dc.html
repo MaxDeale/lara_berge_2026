@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lara Berge Artworks, Home (phone)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#F6F2EA}
+a{color:#3B3530;text-decoration:none}
+:focus-visible{outline:2px solid #6E5268;outline-offset:3px}
+@keyframes drift{0%{transform:scale(1.06)}100%{transform:scale(1.16) translate(-2%,-1.5%)}}
+@keyframes rise{0%{transform:translate(0,0) scale(.5);opacity:0}12%{opacity:.95}70%{opacity:.7}100%{transform:translate(20px,-220px) scale(1.1);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes dangle{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(8px) rotate(2deg)}60%{transform:translateY(3px) rotate(-2deg)}}
+@keyframes menuin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+.drift{animation:drift 28s ease-in-out infinite alternate}
+.mote{position:absolute;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,#FFF6C8 0%,#F4D77A 45%,rgba(244,215,122,0) 72%);box-shadow:0 0 10px 3px rgba(250,224,140,.55);animation:rise 8s linear infinite}
+.sign{display:block;transform-origin:50% 3%;animation:sway 6s ease-in-out infinite}
+.sign img{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 8px rgba(59,53,48,.18))}
+.spider{transform-origin:50% 0;animation:dangle 7s ease-in-out infinite}
+.menu{animation:menuin .35s cubic-bezier(.2,.7,.2,1) both}
+.snap{scroll-snap-type:x mandatory;scrollbar-width:none}
+.snap > *{scroll-snap-align:start}
+@media (prefers-reduced-motion: reduce){.drift,.mote,.sign,.spider,.menu{animation:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 844px; position: relative; overflow: hidden; background: #F6F2EA; color: #3B3530; font-family: 'Alegreya', Georgia, serif; font-size: 17px; line-height: 1.6">
+
+  <header style="position: relative; padding: 14px 12px 8px; display: flex; align-items: center; justify-content: space-between">
+    <button type="button" aria-label="Open menu" aria-expanded="{{menuExpanded}}" onClick="{{openMenu}}" style="width: 48px; height: 48px; border: none; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #3B3530">
+      <svg aria-hidden="true" width="26" height="20" viewBox="0 0 26 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3c7-1.5 15 1 22 0M2 10c8 1 14-1 22 0M2 17c6-1 15 1.5 22 0"></path></svg>
+    </button>
+    <a href="#" aria-label="Lara Berge Artworks, home" style="display: flex; flex-direction: column; align-items: center">
+      <img src="/_blob/ff18e7aa95b9de3a6a96691ba2c6c378" alt="" style="width: 170px; height: auto; display: block">
+      <span style="font-family: 'IM Fell English SC', Georgia, serif; font-size: 12px; letter-spacing: 0.42em; padding-left: 0.42em; color: #6E5268">artworks</span>
+    </a>
+    <a href="Cart.dc.html" aria-label="Cart, 0 items" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; gap: 2px; font-family: 'IM Fell English', Georgia, serif; font-size: 16px">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+      <span>0</span>
+    </a>
+  </header>
+
+  <main>
+    <section aria-label="Featured painting" style="padding: 10px 16px 0">
+      <div style="position: relative; overflow: hidden; aspect-ratio: 4 / 5; clip-path: ellipse(95% 100% at 50% 0%); background: #E9E2D6">
+        <img class="drift" src="/_blob/e2250f8ca86e80f5aa66cdf936e8e6b8" alt="Oil painting of a crooked pink cottage in a sunlit forest clearing" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 42% 40%">
+        <div aria-hidden="true" style="position: absolute; inset: 0">
+          <span class="mote" style="left: 14%; bottom: 10%"></span>
+          <span class="mote" style="left: 36%; bottom: 4%; animation-delay: 2.6s"></span>
+          <span class="mote" style="left: 58%; bottom: 16%; animation-delay: 1.2s; animation-duration: 10s"></span>
+          <span class="mote" style="left: 80%; bottom: 8%; animation-delay: 4s"></span>
+        </div>
+      </div>
+      <p style="margin: 12px 0 0; text-align: center; font-size: 15px; color: #6F655D"><span style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 18px; color: #3B3530">[Painting title]</span> · <a href="Painting.dc.html" style="color: #6E5268; border-bottom: 1px solid #C9B6C3">see it</a></p>
+    </section>
+
+    <section style="padding: 56px 22px 0; text-align: center">
+      <h1 style="margin: 0 0 14px; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.08">Small enchanted worlds, <em style="color: #6E5268">painted by hand</em></h1>
+      <p style="margin: 0; color: #4E4640">Lanterns that float in the dark, fireflies cupped in careful hands, and crooked cottages at the end of the path.</p>
+    </section>
+
+    <section aria-label="Wander in" style="padding: 52px 0 0">
+      <svg aria-hidden="true" viewBox="0 0 560 110" style="display: block; width: 100%; height: auto; position: relative; z-index: 2">
+        <path d="M140 50 C 150 32, 168 24, 190 18" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M-6 44 C 90 38, 180 54, 280 48 C 380 42, 470 36, 566 28 L 566 34 C 470 44, 380 54, 280 58 C 180 64, 90 54, -6 60 Z" fill="#7A5E48" stroke="#3B2E25" stroke-width="2" stroke-linejoin="round"></path>
+        <g stroke="#45512F" stroke-width="1.2" stroke-linejoin="round">
+          <g transform="translate(190 18) rotate(-25)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(176 24) rotate(-110)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(316 46) rotate(-55)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(450 42) rotate(60)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(60 48) rotate(-60)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#8E9B6B"></path><path d="M3 0H24" fill="none"></path></g>
+        </g>
+      </svg>
+      <div style="display: flex; justify-content: space-around; margin-top: -26px; padding: 0 8px; position: relative; z-index: 1">
+        <a href="Gallery.dc.html" class="sign" style="width: 104px"><img src="/_blob/8fc6b36361fcb3922306a1fc633fb729" alt="Gallery"></a>
+        <a href="Shop.dc.html" class="sign" style="width: 104px; animation-delay: -2s"><img src="/_blob/744cc9b1af2ea3c19b558c52e591bc37" alt="Shop"></a>
+        <a href="About.dc.html" class="sign" style="width: 104px; animation-delay: -4s"><img src="/_blob/0549df25c59a50c6c24cd815f4792af5" alt="About"></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="m-new" style="padding: 64px 0 0">
+      <div style="padding: 0 22px; display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px">
+        <h2 id="m-new" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 30px">New paintings</h2>
+        <a href="Gallery.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 17px; color: #6E5268">all →</a>
+      </div>
+      <div class="snap" style="display: flex; gap: 16px; overflow-x: auto; padding: 0 22px 10px">
+        <a href="Painting.dc.html" style="flex: 0 0 250px; display: flex; flex-direction: column; gap: 10px">
+          <div style="background: #FBF9F4; padding: 10px; box-shadow: 0 10px 22px -14px rgba(59,53,48,.35)"><img src="/_blob/fa7d32d443845cc0745ee11d251635ec" alt="Woman cradling a glowing firefly" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
+          <div><p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 21px">[Title]</p><p style="margin: 0; font-size: 14px; color: #6F655D">Original R[price]</p></div>
+        </a>
+        <a href="Painting.dc.html" style="flex: 0 0 250px; display: flex; flex-direction: column; gap: 10px">
+          <div style="background: #FBF9F4; padding: 10px; box-shadow: 0 10px 22px -14px rgba(59,53,48,.35)"><img src="/_blob/d58da7a179a91bd78f7623533600e4c5" alt="Woman with a floating lantern" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top"></div>
+          <div><p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 21px">[Title]</p><p style="margin: 0; font-size: 14px; color: #6F655D"><em>Original sold</em> · prints</p></div>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="m-dig" style="padding: 56px 0 0">
+      <div style="padding: 0 22px; margin-bottom: 18px">
+        <p style="margin: 0; font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.18em; font-size: 13px; color: #6E5268">pixels &amp; ink</p>
+        <h2 id="m-dig" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 30px">Digital illustration</h2>
+      </div>
+      <div class="snap" style="display: flex; gap: 14px; overflow-x: auto; padding: 0 22px 10px; align-items: flex-end">
+        <a href="Lightbox.dc.html" style="flex: 0 0 170px"><img src="/_blob/dc4744add1e1499fbf9ba3c04a36695f" alt="Stag with glowing antlers" style="display: block; width: 100%; aspect-ratio: 760 / 1100; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" style="flex: 0 0 170px; margin-bottom: 24px"><img src="/_blob/a7de392dff37fc5258b508faaedaad01" alt="Octopus with a lantern" style="display: block; width: 100%; aspect-ratio: 900 / 1009; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" style="flex: 0 0 170px"><img src="/_blob/b0070e7931c8b3076e0fc8530920b008" alt="Girl and bear tea picnic" style="display: block; width: 100%; aspect-ratio: 900 / 1047; object-fit: cover"></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="m-hello" style="padding: 64px 22px 0; text-align: center">
+      <img src="/_blob/8f0662daaf443d78d65e1e20b746485e" alt="Lara's illustrated self-portrait" style="width: 230px; height: auto; display: block; margin: 0 auto 10px; mix-blend-mode: multiply">
+      <h2 id="m-hello" style="margin: 0 0 10px; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 32px">Hello, I'm Lara</h2>
+      <p style="margin: 0 0 20px; color: #4E4640">A self-confessed crazy cat lady, usually found behind an easel with a cup of tea going cold beside it.</p>
+      <a href="Commissions.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 52px; background: #6E5268; color: #FFFFFF; font-family: 'IM Fell English', Georgia, serif; font-size: 20px; border-radius: 2px">Commission a piece</a>
+    </section>
+  </main>
+
+  <footer style="margin-top: 90px; padding: 0 22px 32px; position: relative">
+    <img src="/_blob/776afb0a4da74c51758c475213306045" alt="" style="position: absolute; right: 28px; bottom: calc(100% - 26px); width: 74px; height: auto">
+    <div style="border-top: 1px solid #DCD2C4; padding-top: 22px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; color: #6F655D">
+      <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 0 20px">
+        <a href="Commissions.dc.html" style="color: #6F655D; min-height: 40px; display: inline-flex; align-items: center">Commissions</a>
+        <a href="FAQ.dc.html" style="color: #6F655D; min-height: 40px; display: inline-flex; align-items: center">FAQ</a>
+        <a href="FAQ.dc.html" style="color: #6F655D; min-height: 40px; display: inline-flex; align-items: center">Shipping</a>
+        <a href="#" style="color: #6F655D; min-height: 40px; display: inline-flex; align-items: center">Terms</a>
+        <a href="#" style="color: #6F655D; min-height: 40px; display: inline-flex; align-items: center">Privacy</a>
+      </nav>
+      <span style="font-family: 'IM Fell English', Georgia, serif">© 2026 Lara Berge Artworks</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+    <div class="menu" role="dialog" aria-label="Menu" style="position: absolute; top: 0; left: 0; right: 0; height: 844px; background: #F6F2EA; z-index: 10; display: flex; flex-direction: column">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 12px 0">
+        <button type="button" aria-label="Close menu" onClick="{{closeMenu}}" style="width: 48px; height: 48px; border: none; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #3B3530">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+        </button>
+        <img src="/_blob/ff18e7aa95b9de3a6a96691ba2c6c378" alt="" style="width: 150px; height: auto">
+        <span style="width: 48px"></span>
+      </div>
+      <div aria-hidden="true" class="spider" style="position: absolute; top: 0; right: 40px; display: flex; flex-direction: column; align-items: center">
+        <div style="width: 1px; height: 150px; background: #8A8078"></div>
+        <svg width="30" height="30" viewBox="0 0 40 40" fill="none" stroke="#2F2925" stroke-width="1.6" stroke-linecap="round" style="margin-top: -4px"><path d="M17 18c-6-6-11-6-14-3M16 22c-7-2-11 0-14 5M16 26c-6 2-9 6-10 11M18 29c-3 3-4 6-4 9"></path><path d="M23 18c6-6 11-6 14-3M24 22c7-2 11 0 14 5M24 26c6 2 9 6 10 11M22 29c3 3 4 6 4 9"></path><circle cx="20" cy="14" r="4" fill="#2F2925"></circle><ellipse cx="20" cy="24" rx="6" ry="7.5" fill="#2F2925"></ellipse></svg>
+      </div>
+      <nav aria-label="Main" style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 36px; gap: 6px">
+        <a href="Main.dc.html" aria-current="page" style="font-family: 'IM Fell English', Georgia, serif; font-size: 42px; line-height: 1.2; min-height: 56px; color: #6E5268">Home</a>
+        <a href="Gallery.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-size: 42px; line-height: 1.2; min-height: 56px">Gallery</a>
+        <a href="Shop.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-size: 42px; line-height: 1.2; min-height: 56px">Shop</a>
+        <a href="About.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-size: 42px; line-height: 1.2; min-height: 56px">About</a>
+        <a href="Contact.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-size: 42px; line-height: 1.2; min-height: 56px">Contact</a>
+        <a href="Commissions.dc.html" style="margin-top: 18px; font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 21px; color: #6E5268; min-height: 44px">commission a piece →</a>
+      </nav>
+      <div style="padding: 0 36px 34px; display: flex; justify-content: space-between; align-items: flex-end">
+        <a href="#" style="font-size: 16px; color: #4E4640; min-height: 44px; display: inline-flex; align-items: center">@[instagram handle]</a>
+        <img src="/_blob/3b15c078e34a4b36c9ea93270cfbd183" alt="" style="width: 70px; height: auto">
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"menuStartsOpen":{"editor":"boolean","default":false},"$preview":{"width":390,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const open = this.state.open ?? (this.props.menuStartsOpen ?? false);
+    return {
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      openMenu: () => this.setState({ open: true }),
+      closeMenu: () => this.setState({ open: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

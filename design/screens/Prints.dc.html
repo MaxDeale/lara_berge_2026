@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fine art prints, Lara Berge Artworks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#F6F2EA}
+a{color:#3B3530;text-decoration:none}
+a:hover{color:#6E5268}
+:focus-visible{outline:2px solid #6E5268;outline-offset:3px}
+.nav a{position:relative;padding:10px 2px}
+.nav a::after{content:"";position:absolute;left:10%;right:10%;bottom:4px;height:6px;background:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3' fill='none' stroke='%239C7F94' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");opacity:0;transform:scaleX(.4);transition:opacity .3s,transform .4s}
+.nav a:hover::after,.nav a[aria-current]::after{opacity:1;transform:scaleX(1)}
+@keyframes dangle{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(10px) rotate(2deg)}60%{transform:translateY(4px) rotate(-2deg)}}
+.spider{transform-origin:50% 0;animation:dangle 7s ease-in-out infinite}
+.print .paper{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.print:hover .paper{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 22px 30px -18px rgba(59,53,48,.5)}
+@media (prefers-reduced-motion: reduce){.spider{animation:none!important}}
+</style>
+</helmet>
+<div style="background: #F6F2EA; color: #3B3530; font-family: 'Alegreya', Georgia, serif; font-size: 19px; line-height: 1.6; min-height: 100vh; overflow: hidden">
+
+  <dc-import name="Header" current="Shop" cart="{{ 0 }}" hint-size="100%,190px"></dc-import>
+
+  <main style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 0">
+    <nav aria-label="Breadcrumb" style="font-size: 16px; color: #6F655D; margin-bottom: 18px"><a href="Shop.dc.html" style="color: #6F655D; border-bottom: 1px solid #D6CCBE">Shop</a> <span aria-hidden="true">›</span> Prints</nav>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px 40px">
+      <div>
+        <h1 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.05">Fine art prints</h1>
+        <p style="margin: 8px 0 0; max-width: 600px; color: #4E4640">Giclée prints on [paper name] archival cotton paper, each one signed by Lara and sent flat in a sturdy envelope.</p>
+      </div>
+      <div role="group" aria-label="Filter prints" style="display: flex; gap: 10px; flex-wrap: wrap">
+        <sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}" style="min-height: 44px; padding: 0 18px; border-radius: 22px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-family: 'Alegreya', Georgia, serif; font-size: 16px; cursor: pointer">{{f.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <ul aria-label="Print details" style="list-style: none; margin: 28px 0 0; padding: 18px 0; border-top: 1px solid #E1D8CB; border-bottom: 1px solid #E1D8CB; display: flex; flex-wrap: wrap; gap: 10px 40px; font-size: 16px; color: #4E4640">
+      <li><span style="color: #6E5268">✦</span> Sizes A4, A3 &amp; A2</li>
+      <li><span style="color: #6E5268">✦</span> Archival inks, [100+] year lightfast</li>
+      <li><span style="color: #6E5268">✦</span> Signed on the front</li>
+      <li><span style="color: #6E5268">✦</span> Unframed, ready for a standard frame</li>
+    </ul>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 52px 32px; padding-top: 44px">
+      <sc-for list="{{items}}" as="p" hint-placeholder-count="8">
+        <a href="Painting.dc.html" class="print" style="display: flex; flex-direction: column; gap: 14px">
+          <div style="background: #ECE5D9; aspect-ratio: 1 / 1.1; display: flex; align-items: center; justify-content: center; padding: 28px; box-sizing: border-box">
+            <div class="paper" style="background: #FFFFFF; padding: 7%; box-shadow: 0 10px 18px -12px rgba(59,53,48,.45); max-width: 100%; max-height: 100%; box-sizing: border-box; display: flex">
+              <img src="{{p.src}}" alt="{{p.alt}}" style="display: block; max-width: 100%; max-height: 230px; width: auto; height: auto">
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+            <div style="min-width: 0">
+              <h2 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 23px; line-height: 1.2">[Title]</h2>
+              <p style="margin: 0; color: #6F655D; font-size: 15px">{{p.kind}}</p>
+            </div>
+            <p style="margin: 0; font-size: 16px; color: #3B3530; white-space: nowrap">from R[price]</p>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </main>
+
+  <dc-import name="Footer" cat="{{ true }}" hint-size="100%,220px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = '/_blob/';
+    const f = this.state.f ?? 'All';
+    const P = (id, alt) => ({ src: B + id, alt, kind: 'From an oil painting', group: 'Paintings' });
+    const D = (id, alt) => ({ src: B + id, alt, kind: 'Digital illustration', group: 'Digital' });
+    const all = [
+      P('fa7d32d443845cc0745ee11d251635ec', 'Print of a red-haired woman cradling a firefly'),
+      D('a7de392dff37fc5258b508faaedaad01', 'Print of an octopus holding a lantern'),
+      P('d58da7a179a91bd78f7623533600e4c5', 'Print of a woman with a floating lantern'),
+      D('dc4744add1e1499fbf9ba3c04a36695f', 'Print of a stag with glowing antlers'),
+      D('b0070e7931c8b3076e0fc8530920b008', 'Print of a girl and bear tea picnic'),
+      P('e2250f8ca86e80f5aa66cdf936e8e6b8', 'Print of a crooked pink forest cottage'),
+      D('ad2be2c7a67a4b1276991ec0c906ed60', 'Print of a library full of cats'),
+      D('92e382e2ab4497c237d770b410b2114c', 'Print of a witch flying before the moon'),
+      D('70b46e4b88950e5aeb95e6a18fead8f8', 'Print of sleepy mushrooms and fireflies'),
+      D('84ae52b070977a2680f324a267729888', 'Print of a diving mermaid'),
+      D('e7f8692c85b294f8167a3af17c7a7b5d', 'Print of a girl reading among cats'),
+      D('dfee5dcf4e7a7b86308d8768a3de8727', 'Print of a witch at a glowing cauldron')
+    ];
+    const items = all.filter(p => f === 'All' || (f === 'From paintings' ? p.group === 'Paintings' : p.group === 'Digital'));
+    const filters = ['All', 'From paintings', 'Digital illustration'].map(label => {
+      const on = label === f;
+      return { label, pressed: on ? 'true' : 'false', bg: on ? '#3B3530' : 'transparent', fg: on ? '#FBF9F4' : '#3B3530', border: on ? '#3B3530' : '#CFC4B5', pick: () => this.setState({ f: label }) };
+    });
+    return { items, filters };
+  }
+}
+</script>
+</body>
+</html>

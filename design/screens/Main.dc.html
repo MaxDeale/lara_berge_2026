@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lara Berge Artworks, Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#F6F2EA}
+a{color:#3B3530;text-decoration:none}
+a:hover{color:#6E5268}
+:focus-visible{outline:2px solid #6E5268;outline-offset:3px}
+.nav a{position:relative;padding:10px 2px}
+.nav a::after{content:"";position:absolute;left:10%;right:10%;bottom:4px;height:6px;background:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3' fill='none' stroke='%239C7F94' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");opacity:0;transform:scaleX(.4);transition:opacity .3s,transform .4s}
+.nav a:hover::after,.nav a[aria-current]::after{opacity:1;transform:scaleX(1)}
+@keyframes reveal{from{opacity:0;filter:blur(10px);transform:scale(1.03)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes drift{0%{transform:scale(1.06) translate(0,0)}100%{transform:scale(1.16) translate(-2%,-1.5%)}}
+@keyframes rise{0%{transform:translate(0,0) scale(.5);opacity:0}12%{opacity:.95}70%{opacity:.7}100%{transform:translate(36px,-320px) scale(1.1);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(1.8deg)}}
+@keyframes swing{0%{transform:rotate(0)}20%{transform:rotate(7deg)}45%{transform:rotate(-5deg)}70%{transform:rotate(2.5deg)}100%{transform:rotate(0)}}
+@keyframes rustle{0%,100%{transform:rotate(0)}50%{transform:rotate(7deg)}}
+@keyframes dangle{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(10px) rotate(2deg)}60%{transform:translateY(4px) rotate(-2deg)}}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.spider{transform-origin:50% 0;animation:dangle 7s ease-in-out infinite}
+.hero{animation:reveal 1.8s cubic-bezier(.2,.7,.2,1) both}
+.drift{animation:drift 28s ease-in-out infinite alternate}
+.mote{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle,#FFF6C8 0%,#F4D77A 45%,rgba(244,215,122,0) 72%);box-shadow:0 0 12px 4px rgba(250,224,140,.55);animation:rise 9s linear infinite;pointer-events:none}
+.sign{display:block;transform-origin:50% 3%;animation:sway 6s ease-in-out infinite}
+.sign:hover{animation:swing 1.1s ease-in-out}
+.sign img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 10px rgba(59,53,48,.18))}
+.rustle{transform-box:fill-box;transform-origin:0% 50%;animation:rustle 4.5s ease-in-out infinite}
+.card img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.03)}
+.up{animation:fadeup 1s .5s both}
+.strip{scrollbar-width:thin;scrollbar-color:#D6CCBE transparent}
+@media (prefers-reduced-motion: reduce){.hero,.drift,.mote,.sign,.up,.rustle,.spider{animation:none!important}}
+</style>
+</helmet>
+<div style="background: #F6F2EA; color: #3B3530; font-family: 'Alegreya', Georgia, serif; font-size: 19px; line-height: 1.6; min-height: 100vh; overflow: hidden">
+
+  <dc-import name="Header" current="Home" cart="{{ 0 }}" hint-size="100%,190px"></dc-import>
+
+  <main>
+    <section aria-label="Featured painting" style="max-width: 1360px; margin: 0 auto; padding: 30px 24px 0">
+      <div class="hero" style="position: relative; overflow: hidden; aspect-ratio: 16 / 8; min-height: 360px; max-height: 760px; width: 100%; clip-path: ellipse(78% 100% at 50% 0%); background: #E9E2D6">
+        <img class="{{driftClass}}" src="/_blob/e2250f8ca86e80f5aa66cdf936e8e6b8" alt="Oil painting of a crooked pink cottage with copper roofs in a sunlit forest clearing, an iron bridge over a stream" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%">
+        <sc-if value="{{motes}}" hint-placeholder-val="{{ true }}">
+          <div aria-hidden="true" style="position: absolute; inset: 0">
+            <span class="mote" style="left: 12%; bottom: 8%; animation-delay: 0s"></span>
+            <span class="mote" style="left: 22%; bottom: 20%; animation-delay: 2.4s; animation-duration: 11s"></span>
+            <span class="mote" style="left: 33%; bottom: 4%; animation-delay: 5.1s"></span>
+            <span class="mote" style="left: 47%; bottom: 14%; animation-delay: 1.2s; animation-duration: 12s"></span>
+            <span class="mote" style="left: 58%; bottom: 6%; animation-delay: 3.6s"></span>
+            <span class="mote" style="left: 69%; bottom: 22%; animation-delay: 6.3s; animation-duration: 10s"></span>
+            <span class="mote" style="left: 78%; bottom: 10%; animation-delay: 0.8s; animation-duration: 13s"></span>
+            <span class="mote" style="left: 88%; bottom: 18%; animation-delay: 4.4s"></span>
+          </div>
+        </sc-if>
+      </div>
+      <div class="up" style="display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 18px; text-align: center">
+        <p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 22px">[Painting title]</p>
+        <p style="margin: 0; color: #6F655D; font-size: 16px">Oil on canvas · [size] · <a href="Painting.dc.html" style="color: #6E5268; border-bottom: 1px solid #C9B6C3">see the painting</a></p>
+      </div>
+    </section>
+
+    <section aria-label="Introduction" style="max-width: 760px; margin: 0 auto; padding: 96px 24px 0; text-align: center">
+      <h1 style="margin: 0 0 22px; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: clamp(36px, 5vw, 58px); line-height: 1.08">Small enchanted worlds, <em style="color: #6E5268">painted by hand</em></h1>
+      <p style="margin: 0 auto; max-width: 560px; color: #4E4640; font-size: 20px">Lanterns that float in the dark, fireflies cupped in careful hands, and crooked cottages at the end of the path. Real oil paint, real brushes, and usually a cat supervising from the table.</p>
+    </section>
+
+    <section aria-label="Wander in" style="max-width: 1160px; margin: 0 auto; padding: 84px 24px 0; position: relative">
+      <svg aria-hidden="true" viewBox="0 0 1200 140" style="display: block; width: 100%; height: auto; position: relative; z-index: 2; overflow: visible">
+        <path d="M130 70 C 140 90, 160 102, 186 106" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M300 62 C 310 42, 330 30, 352 22" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M560 56 C 575 76, 600 88, 628 92" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M905 56 C 920 36, 945 26, 970 20" fill="none" stroke="#5E4636" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M-10 58 C 120 50, 240 64, 380 58 C 520 52, 640 44, 780 52 C 900 59, 1020 50, 1150 42 C 1170 40, 1185 36, 1196 30 L 1199 34 C 1188 42, 1172 47, 1150 49 C 1030 58, 905 66, 780 60 C 650 53, 525 62, 385 70 C 245 77, 120 66, -10 76 Z" fill="#7A5E48" stroke="#3B2E25" stroke-width="2" stroke-linejoin="round"></path>
+        <path d="M40 67 q30 -4 60 0 M220 68 q40 -5 80 -1 M520 59 q30 -4 60 0 M840 59 q24 -3 48 0 M1040 53 q20 -3 40 0" fill="none" stroke="#4E3B2E" stroke-width="1.2" stroke-linecap="round"></path>
+        <circle cx="436" cy="64" r="3.5" fill="#4E3B2E"></circle>
+        <g stroke="#45512F" stroke-width="1.2" stroke-linejoin="round">
+          <g transform="translate(352 22) rotate(-20)"><g class="rustle"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(340 27) rotate(-100)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(326 34) rotate(-150)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(215 61) rotate(-62)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#74835A"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(238 68) rotate(70)"><g class="rustle" style="animation-delay: -2s"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(186 106) rotate(15)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#A7B087"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(170 103) rotate(100)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#74835A"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(462 64) rotate(55)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#8E9B6B"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(474 60) rotate(-68)"><g class="rustle" style="animation-delay: -1s"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(628 92) rotate(20)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(612 90) rotate(110)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(700 50) rotate(-50)"><g class="rustle" style="animation-delay: -3s"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(724 54) rotate(-125)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#8E9B6B"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(970 20) rotate(-30)"><g class="rustle" style="animation-delay: -1.5s"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#A7B087"></path><path d="M3 0H27" fill="none"></path></g></g>
+          <g transform="translate(956 24) rotate(-100)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#74835A"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(942 31) rotate(-160)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#8E9B6B"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(1040 54) rotate(62)"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#A7B087"></path><path d="M3 0H24" fill="none"></path></g>
+          <g transform="translate(1062 49) rotate(-42)"><path d="M0 0C7-9 22-10 32 0C22 10 7 9 0 0Z" fill="#8E9B6B"></path><path d="M3 0H27" fill="none"></path></g>
+          <g transform="translate(1188 33) rotate(-25)"><g class="rustle" style="animation-delay: -2.5s"><path d="M0 0C6-8 19-9 28 0C19 9 6 8 0 0Z" fill="#74835A"></path><path d="M3 0H24" fill="none"></path></g></g>
+        </g>
+        <g fill="#8C6A86" stroke="#4E3B4A" stroke-width="1">
+          <circle cx="596" cy="80" r="4.5"></circle><circle cx="605" cy="86" r="4"></circle><circle cx="594" cy="90" r="3.5"></circle>
+          <circle cx="1012" cy="62" r="4.5"></circle><circle cx="1020" cy="68" r="3.8"></circle>
+        </g>
+      </svg>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px 9%; margin-top: -58px; position: relative; z-index: 1">
+        <a href="Gallery.dc.html" class="sign" style="width: clamp(150px, 18vw, 210px); animation-delay: -1.5s"><img src="/_blob/8fc6b36361fcb3922306a1fc633fb729" alt="Gallery"></a>
+        <a href="Shop.dc.html" class="sign" style="width: clamp(150px, 18vw, 210px); margin-top: 10px; animation-delay: -3.2s"><img src="/_blob/744cc9b1af2ea3c19b558c52e591bc37" alt="Shop"></a>
+        <a href="About.dc.html" class="sign" style="width: clamp(150px, 18vw, 210px); margin-top: 2px; animation-delay: -4.6s"><img src="/_blob/0549df25c59a50c6c24cd815f4792af5" alt="About"></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="latest-h" style="max-width: 1120px; margin: 0 auto; padding: 104px 24px 0">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 36px">
+        <div>
+          <p style="margin: 0 0 4px; font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.18em; font-size: 15px; color: #6E5268">fresh off the easel</p>
+          <h2 id="latest-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1">New paintings</h2>
+        </div>
+        <a href="Gallery.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 20px; color: #6E5268; min-height: 44px; display: inline-flex; align-items: center">all paintings →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 48px 40px">
+        <article class="card" style="display: flex; flex-direction: column; gap: 14px">
+          <a href="Painting.dc.html" style="display: block; overflow: hidden; background: #FBF9F4; padding: 14px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)">
+            <img src="/_blob/fa7d32d443845cc0745ee11d251635ec" alt="Oil painting of a red-haired woman in profile cradling a glowing firefly against a teal forest" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover">
+          </a>
+          <div>
+            <h3 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 25px">[Title]</h3>
+            <p style="margin: 0; color: #6F655D; font-size: 16px">Original R[price] · prints available</p>
+          </div>
+        </article>
+        <article class="card" style="display: flex; flex-direction: column; gap: 14px">
+          <a href="Painting.dc.html" style="display: block; overflow: hidden; background: #FBF9F4; padding: 14px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)">
+            <img src="/_blob/d58da7a179a91bd78f7623533600e4c5" alt="Oil painting of a woman in a red and violet gown holding up a floating lantern in a dark wood" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top">
+          </a>
+          <div>
+            <h3 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 25px">[Title]</h3>
+            <p style="margin: 0; color: #6F655D; font-size: 16px"><span style="font-style: italic">Original sold</span> · prints available</p>
+          </div>
+        </article>
+        <article class="card" style="display: flex; flex-direction: column; gap: 14px">
+          <a href="Painting.dc.html" style="display: block; overflow: hidden; background: #FBF9F4; padding: 14px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)">
+            <img src="/_blob/e2250f8ca86e80f5aa66cdf936e8e6b8" alt="Oil painting of a crooked pink cottage in a forest clearing" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 38% center">
+          </a>
+          <div>
+            <h3 style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 25px">[Title]</h3>
+            <p style="margin: 0; color: #6F655D; font-size: 16px">Original R[price]</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="digital-h" style="margin: 120px auto 0; max-width: 1360px; padding: 0 24px">
+      <div style="max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px 32px; margin-bottom: 32px">
+        <div style="display: flex; align-items: flex-end; gap: 18px">
+          <sc-if value="{{doodads}}" hint-placeholder-val="{{ true }}">
+            <img src="/_blob/3b15c078e34a4b36c9ea93270cfbd183" alt="" style="width: 78px; height: auto; display: block; margin-bottom: -6px">
+          </sc-if>
+          <div>
+            <p style="margin: 0 0 4px; font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.18em; font-size: 15px; color: #6E5268">pixels &amp; ink</p>
+            <h2 id="digital-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1">Digital illustration</h2>
+          </div>
+        </div>
+        <p style="margin: 0; max-width: 430px; color: #4E4640; font-size: 17px">Witches, stags, octopuses with lanterns and one very patient bear. Order a print, or commission an illustration of your own.</p>
+      </div>
+      <div class="strip" style="display: flex; gap: 22px; overflow-x: auto; padding: 8px 0 18px; align-items: flex-end">
+        <a href="Lightbox.dc.html" class="card" style="flex: 0 0 clamp(190px, 21%, 280px); overflow: hidden; display: block"><img src="/_blob/dc4744add1e1499fbf9ba3c04a36695f" alt="Illustration of a stag whose antlers glow with lights in a snowy night" style="display: block; width: 100%; aspect-ratio: 760 / 1100; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" class="card" style="flex: 0 0 clamp(190px, 21%, 280px); overflow: hidden; display: block; margin-bottom: 40px"><img src="/_blob/a7de392dff37fc5258b508faaedaad01" alt="Illustration of an octopus holding a lantern in a dark sea" style="display: block; width: 100%; aspect-ratio: 900 / 1009; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" class="card" style="flex: 0 0 clamp(190px, 21%, 280px); overflow: hidden; display: block"><img src="/_blob/b0070e7931c8b3076e0fc8530920b008" alt="Illustration of a girl having a tea picnic with a large bear in an autumn forest" style="display: block; width: 100%; aspect-ratio: 900 / 1047; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" class="card" style="flex: 0 0 clamp(190px, 21%, 280px); overflow: hidden; display: block; margin-bottom: 28px"><img src="/_blob/ad2be2c7a67a4b1276991ec0c906ed60" alt="Illustration of a dark-haired woman reading in a cluttered library full of cats" style="display: block; width: 100%; aspect-ratio: 900 / 949; object-fit: cover"></a>
+        <a href="Lightbox.dc.html" class="card" style="flex: 0 0 clamp(190px, 21%, 280px); overflow: hidden; display: block"><img src="/_blob/a90e35a0c7058087bc31332783834118" alt="Illustration of a woman carrying a glowing jack-o-lantern through a dark forest, framed in an oval" style="display: block; width: 100%; aspect-ratio: 794 / 1100; object-fit: cover"></a>
+      </div>
+      <div style="max-width: 1120px; margin: 14px auto 0">
+        <a href="Gallery.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 20px; color: #6E5268; min-height: 44px; display: inline-flex; align-items: center">see all digital work →</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="hello-h" style="max-width: 1000px; margin: 0 auto; padding: 120px 24px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 40px 64px; justify-content: center">
+      <img src="/_blob/8f0662daaf443d78d65e1e20b746485e" alt="Lara's illustrated self-portrait in an ornate oval frame, holding a paintbrush" style="flex: 0 1 340px; width: 340px; max-width: 100%; height: auto; display: block; mix-blend-mode: multiply">
+      <div style="flex: 1 1 380px; min-width: 0">
+        <h2 id="hello-h" style="margin: 0 0 14px; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1">Hello, I'm Lara</h2>
+        <p style="margin: 0 0 14px; color: #4E4640">A self-confessed crazy cat lady and lover of all things whimsical, usually found behind an easel with a cup of tea going cold beside it.</p>
+        <p style="margin: 0 0 22px; color: #4E4640">If there's a little world you'd love to see on your wall, I paint commissions in oil, and draw digital illustrations too.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center">
+          <a href="Commissions.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; background: {{accent}}; color: #FFFFFF; font-family: 'IM Fell English', Georgia, serif; font-size: 20px; border-radius: 2px">Commission a piece</a>
+          <a href="About.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 20px; color: #6E5268; min-height: 44px; display: inline-flex; align-items: center">more about me →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="Footer" cat="{{doodads}}" hint-size="100%,220px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#6E5268","options":["#6E5268","#5F6B55","#7A5A45","#4F566B"]},"heroMotion":{"editor":"enum","options":["drift + fireflies","drift only","still"],"default":"drift + fireflies"},"doodads":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const m = this.props.heroMotion ?? 'drift + fireflies';
+    return {
+      accent: this.props.accent ?? '#6E5268',
+      driftClass: m === 'still' ? '' : 'drift',
+      motes: m === 'drift + fireflies',
+      doodads: this.props.doodads ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

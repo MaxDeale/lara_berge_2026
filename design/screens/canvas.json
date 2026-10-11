@@ -1,0 +1,31 @@
+{"v":3,"createdOnFiles":{"v":1,"at":"2026-10-11T09:55:00+02:00"},"title":"Lara Berge Artworks","launch":{"view":"canvas"},"pages":[],
+"boards":{
+"Main.dc.html":{"x":0,"y":0,"w":1440,"h":3560,"title":"Home","expand":"fill","is_interactive":true},
+"Gallery.dc.html":{"x":1520,"y":0,"w":1440,"h":2960,"title":"Gallery (Paintings / Digital)","expand":"fill","is_interactive":true},
+"Lightbox.dc.html":{"x":3040,"y":0,"w":1440,"h":900,"title":"Gallery lightbox","is_interactive":true},
+"About.dc.html":{"x":4560,"y":0,"w":1440,"h":2600,"title":"About","expand":"fill","is_interactive":true},
+"Contact.dc.html":{"x":6080,"y":0,"w":1440,"h":1800,"title":"Contact","expand":"fill","is_interactive":true},
+"Shop.dc.html":{"x":0,"y":3980,"w":1440,"h":2200,"title":"Shop","expand":"fill","is_interactive":true},
+"Originals.dc.html":{"x":1520,"y":3980,"w":1440,"h":2000,"title":"Shop: Originals","expand":"fill","is_interactive":true},
+"Prints.dc.html":{"x":3040,"y":3980,"w":1440,"h":2300,"title":"Shop: Prints","expand":"fill","is_interactive":true},
+"Painting.dc.html":{"x":4560,"y":3980,"w":1440,"h":2400,"title":"Painting / product page","expand":"fill","is_interactive":true},
+"Commissions.dc.html":{"x":6080,"y":3980,"w":1440,"h":3000,"title":"Commissions","expand":"fill","is_interactive":true},
+"Cart.dc.html":{"x":0,"y":7420,"w":1440,"h":900,"title":"Cart drawer","is_interactive":true},
+"Checkout.dc.html":{"x":1520,"y":7420,"w":1440,"h":1640,"title":"Checkout (hands off to PayFast)","expand":"fill","is_interactive":true},
+"Confirmed.dc.html":{"x":3040,"y":7420,"w":1440,"h":1400,"title":"Order confirmed","expand":"fill","is_interactive":true},
+"FAQ.dc.html":{"x":4560,"y":7420,"w":1440,"h":2100,"title":"FAQ","expand":"fill","is_interactive":true},
+"NotFound.dc.html":{"x":6080,"y":7420,"w":1440,"h":900,"title":"404","is_interactive":true},
+"MobileHome.dc.html":{"x":0,"y":9980,"w":390,"h":3000,"title":"Mobile: Home + menu","is_interactive":true},
+"Header.dc.html":{"x":520,"y":9980,"w":1440,"h":240,"title":"Component: Header"},
+"Footer.dc.html":{"x":520,"y":10340,"w":1440,"h":260,"title":"Component: Footer"}
+},
+"order":["Main.dc.html","Gallery.dc.html","Lightbox.dc.html","About.dc.html","Contact.dc.html","Shop.dc.html","Originals.dc.html","Prints.dc.html","Painting.dc.html","Commissions.dc.html","Cart.dc.html","Checkout.dc.html","Confirmed.dc.html","FAQ.dc.html","NotFound.dc.html","MobileHome.dc.html","Header.dc.html","Footer.dc.html"],
+"notes":{
+"t1":{"x":0,"y":-300,"text":"Explore","kind":"title1","maxW":7520},
+"t2":{"x":0,"y":3680,"text":"Shop","kind":"title1","maxW":7520},
+"t3":{"x":0,"y":7120,"text":"Cart, checkout & help","kind":"title1","maxW":7520},
+"t4":{"x":0,"y":9680,"text":"Mobile & shared parts","kind":"title1","maxW":7520},
+"s1":{"x":2080,"y":9980,"text":"Spider on the header thread and the 404 page is a stand-in drawing. Swap for Lara's own spider when she sends it.","w":300,"fill":"orange"},
+"s2":{"x":2080,"y":10340,"text":"Missing painted signs to ask Lara for: Illustrations / Digital, Prints, Commissions. Text titles are used there for now.","w":300,"fill":"orange"}
+},
+"designSystems":[]}

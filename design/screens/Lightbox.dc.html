@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gallery lightbox, Lara Berge Artworks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#231E1B}
+a{text-decoration:none}
+:focus-visible{outline:2px solid #E8D9E3;outline-offset:3px}
+@keyframes show{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+.shown{animation:show .5s cubic-bezier(.2,.7,.2,1) both}
+.navbtn{transition:background .2s}
+.navbtn:hover{background:rgba(251,249,244,.12)}
+@media (prefers-reduced-motion: reduce){.shown{animation:none!important}}
+</style>
+</helmet>
+<div role="dialog" aria-label="Artwork viewer" style="width: 1440px; height: 900px; box-sizing: border-box; background: #231E1B; color: #F3EDE4; font-family: 'Alegreya', Georgia, serif; position: relative; display: flex; flex-direction: column">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 22px 32px 0">
+    <span style="font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.2em; font-size: 15px; color: #CFC2B6">{{collection}} · {{counter}}</span>
+    <a href="Gallery.dc.html" aria-label="Close viewer" style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; color: #F3EDE4; border-radius: 50%">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+    </a>
+  </div>
+  <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 8px 24px; gap: 24px; min-height: 0">
+    <button type="button" class="navbtn" aria-label="Previous piece" onClick="{{prev}}" style="flex: 0 0 auto; width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(243,237,228,.35); background: transparent; color: #F3EDE4; cursor: pointer; display: flex; align-items: center; justify-content: center">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+    </button>
+    <figure style="margin: 0; flex: 1; height: 100%; display: flex; align-items: center; justify-content: center; min-width: 0">
+      <sc-for list="{{current}}" as="c" hint-placeholder-count="1">
+        <img class="shown" src="{{c.src}}" alt="{{c.alt}}" style="display: block; max-width: 100%; max-height: 640px; width: auto; height: auto; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6)">
+      </sc-for>
+    </figure>
+    <button type="button" class="navbtn" aria-label="Next piece" onClick="{{next}}" style="flex: 0 0 auto; width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(243,237,228,.35); background: transparent; color: #F3EDE4; cursor: pointer; display: flex; align-items: center; justify-content: center">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+  </div>
+  <div style="padding: 0 32px 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+    <div>
+      <p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 30px; line-height: 1.15">[Title]</p>
+      <p style="margin: 2px 0 0; color: #CFC2B6; font-size: 16px">{{medium}} · [year]</p>
+    </div>
+    <div style="display: flex; gap: 12px 22px; align-items: center; flex-wrap: wrap">
+      <a href="Commissions.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: #E8D9E3; min-height: 44px; display: inline-flex; align-items: center">commission something similar →</a>
+      <a href="Painting.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: #F3EDE4; color: #3B3530; font-family: 'IM Fell English', Georgia, serif; font-size: 19px; border-radius: 2px">Order a print</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"collection":{"editor":"enum","options":["Digital illustration","Paintings"],"default":"Digital illustration"},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = '/_blob/';
+    const isPaint = (this.props.collection ?? 'Digital illustration') === 'Paintings';
+    const list = isPaint ? [
+      { src: B + 'fa7d32d443845cc0745ee11d251635ec', alt: 'Red-haired woman cradling a glowing firefly, oil painting' },
+      { src: B + 'd58da7a179a91bd78f7623533600e4c5', alt: 'Woman holding a floating lantern in a dark wood, oil painting' },
+      { src: B + 'e2250f8ca86e80f5aa66cdf936e8e6b8', alt: 'Crooked pink cottage in a forest clearing, oil painting' }
+    ] : [
+      { src: B + 'a7de392dff37fc5258b508faaedaad01', alt: 'Octopus holding a lantern in the deep sea' },
+      { src: B + 'dc4744add1e1499fbf9ba3c04a36695f', alt: 'Stag with glowing antlers in the snow' },
+      { src: B + 'ad2be2c7a67a4b1276991ec0c906ed60', alt: 'Woman reading in a library full of cats' },
+      { src: B + 'b0070e7931c8b3076e0fc8530920b008', alt: 'Girl and bear sharing a tea picnic' },
+      { src: B + '92e382e2ab4497c237d770b410b2114c', alt: 'Witch on a broomstick before a full moon' }
+    ];
+    const i = ((this.state.i ?? 0) % list.length + list.length) % list.length;
+    return {
+      current: [list[i]],
+      counter: (i + 1) + ' of ' + list.length,
+      collection: isPaint ? 'Paintings' : 'Digital illustration',
+      medium: isPaint ? 'Oil on canvas' : 'Digital illustration',
+      prev: () => this.setState({ i: i - 1 }),
+      next: () => this.setState({ i: i + 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

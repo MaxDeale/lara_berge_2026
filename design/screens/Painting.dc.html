@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>[Painting title], Lara Berge Artworks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=IM+Fell+English+SC&amp;family=Alegreya:ital,wght@0,400;0,500;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#F6F2EA}
+a{color:#3B3530;text-decoration:none}
+a:hover{color:#6E5268}
+:focus-visible{outline:2px solid #6E5268;outline-offset:3px}
+.nav a{position:relative;padding:10px 2px}
+.nav a::after{content:"";position:absolute;left:10%;right:10%;bottom:4px;height:6px;background:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3' fill='none' stroke='%239C7F94' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");opacity:0;transform:scaleX(.4);transition:opacity .3s,transform .4s}
+.nav a:hover::after,.nav a[aria-current]::after{opacity:1;transform:scaleX(1)}
+@keyframes dangle{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(10px) rotate(2deg)}60%{transform:translateY(4px) rotate(-2deg)}}
+@keyframes fade{from{opacity:.2}to{opacity:1}}
+.spider{transform-origin:50% 0;animation:dangle 7s ease-in-out infinite}
+.mainimg{animation:fade .45s both}
+details summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:52px;font-family:'IM Fell English',Georgia,serif;font-size:21px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-family:'Alegreya',Georgia,serif;font-size:24px;color:#6E5268}
+details[open] summary::after{content:"–"}
+.card img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion: reduce){.spider,.mainimg{animation:none!important}}
+</style>
+</helmet>
+<div style="background: #F6F2EA; color: #3B3530; font-family: 'Alegreya', Georgia, serif; font-size: 19px; line-height: 1.6; min-height: 100vh; overflow: hidden">
+
+  <dc-import name="Header" current="Shop" cart="{{ 0 }}" hint-size="100%,190px"></dc-import>
+
+  <main style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 0">
+    <nav aria-label="Breadcrumb" style="font-size: 16px; color: #6F655D; margin-bottom: 26px"><a href="Shop.dc.html" style="color: #6F655D; border-bottom: 1px solid #D6CCBE">Shop</a> <span aria-hidden="true">›</span> <a href="Originals.dc.html" style="color: #6F655D; border-bottom: 1px solid #D6CCBE">Originals</a> <span aria-hidden="true">›</span> [Title]</nav>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 48px 72px; align-items: flex-start">
+      <section aria-label="Images" style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <div style="background: #FBF9F4; padding: 22px; box-shadow: 0 18px 40px -22px rgba(59,53,48,.45)">
+          <sc-for list="{{shown}}" as="s" hint-placeholder-count="1">
+            <img class="mainimg" src="{{s.src}}" alt="{{s.alt}}" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover">
+          </sc-for>
+        </div>
+        <div role="group" aria-label="Choose a view" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+          <sc-for list="{{thumbs}}" as="t" hint-placeholder-count="4">
+            <button type="button" aria-label="{{t.label}}" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}" style="padding: 0; border: 2px solid {{t.border}}; background: #FBF9F4; cursor: pointer; border-radius: 2px; overflow: hidden">
+              <img src="{{t.src}}" alt="" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover">
+            </button>
+          </sc-for>
+        </div>
+        <p style="margin: 0; font-size: 15px; color: #6F655D; font-style: italic">Photographed in daylight. Colours may shift a little from screen to screen.</p>
+      </section>
+
+      <section aria-labelledby="title-h" style="flex: 1 1 420px; min-width: 0">
+        <p style="margin: 0 0 4px; font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.18em; font-size: 15px; color: #6E5268">oil painting · 2026</p>
+        <h1 id="title-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 54px; line-height: 1.05">[Title]</h1>
+        <p style="margin: 8px 0 0; color: #6F655D; font-size: 17px">Oil on stretched canvas · [W × H cm] · signed on the back</p>
+        <p style="margin: 22px 0 0; color: #4E4640">[A few lines from Lara about this painting: the story behind it, where the light comes from, what she hopes it feels like on a wall.]</p>
+
+        <fieldset style="border: none; margin: 30px 0 0; padding: 0">
+          <legend style="font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.14em; font-size: 15px; color: #6E5268; margin-bottom: 12px">choose</legend>
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <button type="button" aria-pressed="{{origPressed}}" onClick="{{pickOriginal}}" style="text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; min-height: 72px; border: 1.5px solid {{origBorder}}; background: {{origBg}}; border-radius: 3px; cursor: pointer; font-family: 'Alegreya', Georgia, serif; color: #3B3530">
+              <span style="display: flex; flex-direction: column"><span style="font-family: 'IM Fell English', Georgia, serif; font-size: 22px">The original</span><span style="font-size: 15px; color: #6F655D">One of a kind · certificate of authenticity</span></span>
+              <span style="font-family: 'IM Fell English', Georgia, serif; font-size: 22px">R[price]</span>
+            </button>
+            <button type="button" aria-pressed="{{printPressed}}" onClick="{{pickPrint}}" style="text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; min-height: 72px; border: 1.5px solid {{printBorder}}; background: {{printBg}}; border-radius: 3px; cursor: pointer; font-family: 'Alegreya', Georgia, serif; color: #3B3530">
+              <span style="display: flex; flex-direction: column"><span style="font-family: 'IM Fell English', Georgia, serif; font-size: 22px">Fine art print</span><span style="font-size: 15px; color: #6F655D">Signed giclée on archival cotton paper</span></span>
+              <span style="font-family: 'IM Fell English', Georgia, serif; font-size: 22px">from R[price]</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <sc-if value="{{isPrint}}" hint-placeholder-val="{{ false }}">
+          <fieldset style="border: none; margin: 24px 0 0; padding: 0">
+            <legend style="font-family: 'IM Fell English SC', Georgia, serif; letter-spacing: 0.14em; font-size: 15px; color: #6E5268; margin-bottom: 12px">print size</legend>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+              <sc-for list="{{sizes}}" as="z" hint-placeholder-count="3">
+                <button type="button" aria-pressed="{{z.pressed}}" onClick="{{z.pick}}" style="min-height: 64px; border: 1.5px solid {{z.border}}; background: {{z.bg}}; border-radius: 3px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Alegreya', Georgia, serif; color: #3B3530; gap: 0">
+                  <span style="font-family: 'IM Fell English', Georgia, serif; font-size: 21px">{{z.label}}</span>
+                  <span style="font-size: 14px; color: #6F655D">{{z.dims}} · R[price]</span>
+                </button>
+              </sc-for>
+            </div>
+          </fieldset>
+        </sc-if>
+
+        <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid #E1D8CB; display: flex; flex-direction: column; gap: 14px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline">
+            <span style="color: #4E4640">{{choiceLabel}}</span>
+            <span style="font-family: 'IM Fell English', Georgia, serif; font-size: 32px">R[price]</span>
+          </div>
+          <a href="Cart.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 56px; background: #6E5268; color: #FFFFFF; font-family: 'IM Fell English', Georgia, serif; font-size: 22px; border-radius: 2px">Add to cart</a>
+          <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; color: #4E4640">
+            <li>✦ {{shipLine}}</li>
+            <li>✦ Packed by hand</li>
+            <li>✦ Secure checkout with PayFast</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 30px; border-top: 1px solid #E1D8CB">
+          <details open style="border-bottom: 1px solid #E1D8CB; padding: 4px 0">
+            <summary>About the painting</summary>
+            <p style="margin: 4px 0 18px; color: #4E4640; font-size: 17px">Oil on [canvas / board], [W × H × D cm]. Varnished for protection, sides painted, and wired so it's ready to hang straight out of the box. Arrives with a signed certificate of authenticity.</p>
+          </details>
+          <details style="border-bottom: 1px solid #E1D8CB; padding: 4px 0">
+            <summary>Shipping &amp; packaging</summary>
+            <p style="margin: 4px 0 18px; color: #4E4640; font-size: 17px">Originals are wrapped in glassine, corner-protected and boxed, then couriered with tracking. South Africa: [x to y] working days. International: [x to y] working days, duties may apply.</p>
+          </details>
+          <details style="border-bottom: 1px solid #E1D8CB; padding: 4px 0">
+            <summary>Caring for an oil painting</summary>
+            <p style="margin: 4px 0 18px; color: #4E4640; font-size: 17px">Hang it out of direct sunlight and away from damp walls. Dust gently with a soft, dry brush. Never use water or cleaning sprays.</p>
+          </details>
+        </div>
+      </section>
+    </div>
+
+    <section aria-labelledby="more-h" style="margin-top: 120px">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 32px">
+        <h2 id="more-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: 36px">You might also love</h2>
+        <a href="Originals.dc.html" style="font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: #6E5268; min-height: 44px; display: inline-flex; align-items: center">all originals →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+        <a href="Painting.dc.html" class="card" style="display: flex; flex-direction: column; gap: 12px">
+          <div style="overflow: hidden; background: #FBF9F4; padding: 12px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)"><img src="/_blob/d58da7a179a91bd78f7623533600e4c5" alt="Woman holding a floating lantern in a dark wood" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top"></div>
+          <div><p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 23px">[Title]</p><p style="margin: 0; font-size: 15px; color: #6F655D">Original sold · prints from R[price]</p></div>
+        </a>
+        <a href="Painting.dc.html" class="card" style="display: flex; flex-direction: column; gap: 12px">
+          <div style="overflow: hidden; background: #FBF9F4; padding: 12px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)"><img src="/_blob/e2250f8ca86e80f5aa66cdf936e8e6b8" alt="Crooked pink cottage in a forest clearing" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 38% center"></div>
+          <div><p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 23px">[Title]</p><p style="margin: 0; font-size: 15px; color: #6F655D">Original R[price]</p></div>
+        </a>
+        <a href="Painting.dc.html" class="card" style="display: flex; flex-direction: column; gap: 12px">
+          <div style="overflow: hidden; background: #FBF9F4; padding: 12px; box-shadow: 0 12px 28px -16px rgba(59,53,48,0.32)"><img src="/_blob/a7de392dff37fc5258b508faaedaad01" alt="Octopus holding a lantern in the deep sea" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
+          <div><p style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 23px">[Title]</p><p style="margin: 0; font-size: 15px; color: #6F655D">Digital · prints from R[price]</p></div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="Footer" cat="{{ true }}" hint-size="100%,220px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startWith":{"editor":"enum","options":["Original","Print"],"default":"Original"},"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const B = '/_blob/';
+    const views = [
+      { src: B + 'fa7d32d443845cc0745ee11d251635ec', alt: 'Full painting: a red-haired woman in profile cradling a glowing firefly against a teal forest', label: 'Full painting' },
+      { src: B + 'd75a0b77075f3c3656611cd0ccd0699a', alt: 'Detail of the face in profile', label: 'Detail: face' },
+      { src: B + 'f550498ed80ff652fe7a3f369d9a43e9', alt: 'Detail of the glowing firefly', label: 'Detail: firefly glow' },
+      { src: B + '3cc61c8eee82863fd460ff140253734e', alt: 'Detail of the sleeve and hair brushwork', label: 'Detail: brushwork' }
+    ];
+    const v = this.state.v ?? 0;
+    const opt = this.state.opt ?? ((this.props.startWith ?? 'Original') === 'Print' ? 'print' : 'original');
+    const size = this.state.size ?? 'A3';
+    const on = (x) => ({ border: x ? '#3B3530' : '#D6CCBE', bg: x ? '#FBF9F4' : 'transparent' });
+    const o = on(opt === 'original'), p = on(opt === 'print');
+    const dims = { A4: '21 × 30 cm', A3: '30 × 42 cm', A2: '42 × 59 cm' };
+    return {
+      shown: [views[v]],
+      thumbs: views.map((t, i) => ({ ...t, pressed: i === v ? 'true' : 'false', border: i === v ? '#6E5268' : 'transparent', pick: () => this.setState({ v: i }) })),
+      origPressed: opt === 'original' ? 'true' : 'false', origBorder: o.border, origBg: o.bg,
+      printPressed: opt === 'print' ? 'true' : 'false', printBorder: p.border, printBg: p.bg,
+      pickOriginal: () => this.setState({ opt: 'original' }),
+      pickPrint: () => this.setState({ opt: 'print' }),
+      isPrint: opt === 'print',
+      sizes: ['A4', 'A3', 'A2'].map(s => ({ label: s, dims: dims[s], pressed: s === size ? 'true' : 'false', ...on(s === size), pick: () => this.setState({ size: s }) })),
+      choiceLabel: opt === 'print' ? 'Signed print · ' + size : 'The original painting',
+      shipLine: opt === 'print' ? 'Printed & shipped in [x] working days' : 'Ships in [x] working days'
+    };
+  }
+}
+</script>
+</body>
+</html>
