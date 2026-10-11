@@ -1,6 +1,367 @@
 @import 'tailwindcss';
 
-body {
-  background: #f6f2ea;
-  color: #3b3530;
+/* Brand tokens. Mirrors CLAUDE.md and design/DESIGN.md: change them there first. */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-cream: #f6f2ea;
+  --color-paper: #fbf9f4;
+  --color-ink: #3b3530;
+  --color-ink-soft: #4e4640;
+  --color-muted: #6f655d;
+  --color-mauve: #6e5268;
+  --color-mauve-light: #9c7f94;
+  --color-mauve-pale: #c9b6c3;
+  --color-hairline: #e1d8cb;
+  --color-hairline-strong: #d6ccbe;
+  --color-bark: #7a5e48;
+  --color-bark-outline: #3b2e25;
+  --color-twig: #5e4636;
+  --color-leaf: #8e9b6b;
+  --color-leaf-dark: #74835a;
+  --color-leaf-light: #a7b087;
+  --color-leaf-vein: #45512f;
+  --color-berry: #8c6a86;
+  --color-night: #231e1b;
+
+  /* Supporting neutrals that appear in the screens */
+  --color-sand: #e9e2d6; /* image placeholder behind arches and hero */
+  --color-table: #ece5d9; /* the "table" prints sit on */
+  --color-rule: #dcd2c4; /* footer rule */
+  --color-chip: #cfc4b5; /* unpressed chip borders, dashed slots */
+  --color-thread: #8a8078; /* spider thread */
+  --color-spider: #2f2925;
+  --color-star: #e8c766;
+  --color-night-text: #f3ede4;
+  --color-night-muted: #cfc2b6;
+  --color-night-accent: #e8d9e3;
+
+  --font-display: var(--font-im-fell), Georgia, serif;
+  --font-sc: var(--font-im-fell-sc), Georgia, serif;
+  --font-body: var(--font-alegreya), Georgia, serif;
+
+  --shadow-mat: 0 12px 28px -16px rgba(59, 53, 48, 0.32);
+  --shadow-mat-sm: 0 10px 22px -14px rgba(59, 53, 48, 0.35);
+  --shadow-tile: 0 10px 22px -16px rgba(59, 53, 48, 0.35);
+  --shadow-arch: 0 18px 40px -22px rgba(59, 53, 48, 0.45);
+  --shadow-polaroid: 0 18px 36px -18px rgba(59, 53, 48, 0.45);
+  --shadow-paper: 0 10px 18px -12px rgba(59, 53, 48, 0.45);
+  --shadow-paper-lift: 0 22px 30px -18px rgba(59, 53, 48, 0.5);
+  --shadow-thumb: 0 6px 14px -10px rgba(59, 53, 48, 0.5);
+  --shadow-drawer: -20px 0 50px -20px rgba(35, 30, 27, 0.45);
+  --shadow-viewer: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  --shadow-field: 0 0 0 3px rgba(110, 82, 104, 0.15);
+
+  --radius-arch: 210px 210px 4px 4px;
+
+  --ease-story: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --animate-reveal: reveal 1.8s var(--ease-story) both;
+  --animate-drift: drift 28s ease-in-out infinite alternate;
+  --animate-rise: rise 9s linear infinite;
+  /* --sway-delay staggers idle sway without delaying the hover swing */
+  --animate-sway: sway 6s ease-in-out var(--sway-delay, 0s) infinite;
+  --animate-swing: swing 1.1s ease-in-out;
+  --animate-rustle: rustle 4.5s ease-in-out infinite;
+  --animate-dangle: dangle 7s ease-in-out infinite;
+  --animate-fadeup: fadeup 0.6s both;
+  --animate-fadeup-late: fadeup 1s 0.5s both;
+  --animate-show: show 0.5s var(--ease-story) both;
+  --animate-slidein: slidein 0.45s var(--ease-story) both;
+  --animate-menuin: menuin 0.35s var(--ease-story) both;
+  --animate-pop: pop 0.8s var(--ease-story) both;
+  --animate-twinkle: twinkle 2.6s ease-in-out infinite;
+  --animate-descend: descend 2.2s cubic-bezier(0.3, 0.7, 0.3, 1) both;
+  --animate-fade: fade 0.45s both;
+  --animate-pendulum: pendulum 6s 2.2s ease-in-out infinite;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(1.03);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+  @keyframes drift {
+    0% {
+      transform: scale(1.06) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.16) translate(-2%, -1.5%);
+    }
+  }
+  @keyframes rise {
+    0% {
+      transform: translate(0, 0) scale(0.5);
+      opacity: 0;
+    }
+    12% {
+      opacity: 0.95;
+    }
+    70% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(var(--rise-x, 36px), var(--rise-y, -320px)) scale(1.1);
+      opacity: 0;
+    }
+  }
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(-1.8deg);
+    }
+    50% {
+      transform: rotate(1.8deg);
+    }
+  }
+  @keyframes swing {
+    0% {
+      transform: rotate(0);
+    }
+    20% {
+      transform: rotate(7deg);
+    }
+    45% {
+      transform: rotate(-5deg);
+    }
+    70% {
+      transform: rotate(2.5deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+  @keyframes rustle {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    50% {
+      transform: rotate(7deg);
+    }
+  }
+  @keyframes dangle {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+    30% {
+      transform: translateY(10px) rotate(2deg);
+    }
+    60% {
+      transform: translateY(4px) rotate(-2deg);
+    }
+  }
+  @keyframes fadeup {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes show {
+    from {
+      opacity: 0;
+      transform: scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slidein {
+    from {
+      transform: translateX(40px);
+      opacity: 0;
+    }
+    to {
+      transform: none;
+      opacity: 1;
+    }
+  }
+  @keyframes menuin {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.7);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes descend {
+    0% {
+      transform: translateY(-120px);
+    }
+    60% {
+      transform: translateY(8px);
+    }
+    80% {
+      transform: translateY(-4px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes pendulum {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    30% {
+      transform: rotate(3deg);
+    }
+    60% {
+      transform: rotate(-3deg);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-cream);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 19px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-mauve);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-mauve);
+    outline-offset: 3px;
+  }
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--color-mauve-pale);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /* Hand-drawn swash under nav links: draws in on hover and stays on the active page */
+  .swash {
+    position: relative;
+  }
+  .swash::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 4px;
+    height: 6px;
+    background: no-repeat center/100% 100%
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'%3E%3Cpath d='M1 4 C 12 1, 22 6, 32 3 S 50 1, 59 3' fill='none' stroke='%239C7F94' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition:
+      opacity 0.3s,
+      transform 0.4s;
+  }
+  .swash:hover::after,
+  .swash[aria-current]::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* Leaves that rustle on the branch */
+  .rustle {
+    transform-box: fill-box;
+    transform-origin: 0% 50%;
+    animation: var(--animate-rustle);
+  }
+
+  /* Accordion (native <details>) */
+  .accordion > summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .accordion > summary::-webkit-details-marker {
+    display: none;
+  }
+  .accordion > summary::after {
+    content: '+';
+    flex: 0 0 auto;
+    font-family: var(--font-body);
+    color: var(--color-mauve);
+  }
+  .accordion[open] > summary::after {
+    content: '–';
+  }
+
+  /* Thin scrollbar on horizontal strips */
+  .strip {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hairline-strong) transparent;
+  }
+}
+
+/* Every animation sits behind prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
