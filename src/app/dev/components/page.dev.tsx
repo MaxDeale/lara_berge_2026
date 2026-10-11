@@ -1,4 +1,5 @@
 // Dev-only component showcase. `.dev.tsx` pages are routes only outside production (next.config.ts).
+import '../../globals.css'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Accordion, AccordionItem } from '@/components/Accordion'

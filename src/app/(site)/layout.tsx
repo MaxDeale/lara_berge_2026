@@ -1,3 +1,4 @@
+import '../globals.css'
 import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
 import { CartHydrator } from '@/lib/cart/CartHydrator'

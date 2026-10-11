@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { fontVariables } from './fonts'
-import './globals.css'
+
+// Global site CSS is imported by the (site) layout, not here, so the embedded
+// Sanity Studio at /studio isn't affected by the site's base styles.
 
 export const metadata: Metadata = {
   title: 'Lara Berge Artworks',
