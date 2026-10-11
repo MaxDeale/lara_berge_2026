@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useActionState, useEffect, useRef, useState } from 'react'
+import { startTransition, useActionState, useEffect, useRef, useState, useTransition } from 'react'
 import { sendCommission } from '@/app/actions/commission'
 import { Button, TextButton } from '@/components/Button'
 import { useCommissionKind } from '@/components/commissions/CommissionKind'
@@ -17,6 +17,7 @@ import {
   TextInput,
 } from '@/components/forms/fields'
 import { brand } from '@/lib/brand'
+import { downscale } from '@/lib/forms/downscale'
 import { DIGITAL_USES, MAX_REFERENCE_BYTES, MAX_REFERENCES } from '@/lib/forms/commission'
 import type { FormState } from '@/lib/forms/contact'
 
@@ -39,7 +40,23 @@ function CommissionFormRound({
   replyDays,
   onAgain,
 }: CommissionFormProps & { onAgain: () => void }) {
-  const [state, action, pending] = useActionState(sendCommission, initial)
+  const [state, action, sending] = useActionState(sendCommission, initial)
+  const [preparing, startPreparing] = useTransition()
+  const pending = sending || preparing
+
+  // Shrink the photos in the browser first so they fit the upload limit, then send
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const form = new FormData(event.currentTarget)
+    startPreparing(async () => {
+      const files = form
+        .getAll('references')
+        .filter((f): f is File => f instanceof File && f.size > 0)
+      form.delete('references')
+      for (const file of files) form.append('references', await downscale(file))
+      startTransition(() => action(form))
+    })
+  }
   const { kind, setKind } = useCommissionKind()
   const thanksRef = useRef<HTMLHeadingElement>(null)
   const e = state.errors ?? {}
@@ -88,7 +105,7 @@ function CommissionFormRound({
         No commitment yet. This just starts the conversation.
       </p>
       <form
-        action={action}
+        onSubmit={onSubmit}
         noValidate
         className="relative grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-x-6 gap-y-[22px]"
       >

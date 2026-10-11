@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // `page.dev.tsx` files (the /dev/components showcase) only count as routes outside production.
   pageExtensions: isProd ? ['tsx', 'ts'] : ['dev.tsx', 'tsx', 'ts'],
+  experimental: {
+    // Commission reference photos are downscaled in the browser first; Vercel caps bodies at 4.5 MB
+    serverActions: { bodySizeLimit: '4.5mb' },
+  },
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io' }],
   },
