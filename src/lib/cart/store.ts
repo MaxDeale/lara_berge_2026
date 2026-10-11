@@ -2,19 +2,17 @@
 
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+import { addLine, removeLine, setQty, type CartLine } from './lines'
 
-export type PrintSize = 'A4' | 'A3' | 'A2'
-
-export type CartLine = {
-  artworkId: string
-  type: 'original' | 'print'
-  size?: PrintSize
-  qty: number
-}
+export type { CartLine, PrintSize } from './lines'
 
 type CartState = {
   lines: CartLine[]
   drawerOpen: boolean
+  add: (line: CartLine) => void
+  setQty: (key: string, qty: number) => void
+  remove: (key: string) => void
+  clear: () => void
   openDrawer: () => void
   closeDrawer: () => void
 }
@@ -25,6 +23,10 @@ export const useCart = create<CartState>()(
     (set) => ({
       lines: [],
       drawerOpen: false,
+      add: (line) => set((s) => ({ lines: addLine(s.lines, line), drawerOpen: true })),
+      setQty: (key, qty) => set((s) => ({ lines: setQty(s.lines, key, qty) })),
+      remove: (key) => set((s) => ({ lines: removeLine(s.lines, key) })),
+      clear: () => set({ lines: [] }),
       openDrawer: () => set({ drawerOpen: true }),
       closeDrawer: () => set({ drawerOpen: false }),
     }),

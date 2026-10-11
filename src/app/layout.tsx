@@ -5,7 +5,7 @@ import { fontVariables } from './fonts'
 // Sanity Studio at /studio isn't affected by the site's base styles.
 
 export const metadata: Metadata = {
-  title: 'Lara Berge Artworks',
+  title: { default: 'Lara Berge Artworks', template: '%s · Lara Berge Artworks' },
   description: 'Original oil paintings, signed fine art prints and commissions by Lara Berge.',
 }
 

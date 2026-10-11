@@ -441,7 +441,12 @@ async function seedSettings() {
       note('studio assistants', '[Cat names], who mostly sit on the reference photos.'),
       note('based in', '[City], South Africa. Shipping everywhere.'),
     ],
-    closeUpArtwork: ref('artwork-firefly'),
+
+    shopOriginalsArtwork: ref('artwork-firefly'),
+    shopPrintsArtwork: ref('artwork-octopus'),
+    shopCommissionsArtwork: ref('artwork-lantern'),
+    commissionOilArtwork: ref('artwork-lantern'),
+    commissionDigitalArtwork: ref('artwork-armchair-cats'),
 
     shippingCourier: {
       label: 'Courier, door to door',

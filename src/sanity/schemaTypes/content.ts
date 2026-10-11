@@ -2,14 +2,10 @@ import { DocumentTextIcon } from '@sanity/icons/DocumentText'
 import { HelpCircleIcon } from '@sanity/icons/HelpCircle'
 import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
 import { defineField, defineType } from 'sanity'
+import { FAQ_SECTIONS } from '../constants'
 import { simpleBlockContent } from './fields'
 
-export const FAQ_SECTIONS = [
-  { title: 'Orders & shipping', value: 'shipping' },
-  { title: 'Originals & prints', value: 'art' },
-  { title: 'Commissions', value: 'commissions' },
-  { title: 'Payments & returns', value: 'payments' },
-] as const
+export { FAQ_SECTIONS }
 
 export const faqItem = defineType({
   name: 'faqItem',

@@ -1,9 +1,14 @@
 import '../globals.css'
+import { Suspense } from 'react'
 import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
 import { CartHydrator } from '@/lib/cart/CartHydrator'
+import { instagramUrl } from '@/lib/site'
+import { getSettings } from '@/sanity/queries'
 
-export default function SiteLayout({ children }: LayoutProps<'/'>) {
+export default async function SiteLayout({ children, modal }: LayoutProps<'/'>) {
+  const settings = await getSettings()
+  const instagram = instagramUrl(settings.instagramHandle)
   return (
     <div className="flex min-h-dvh flex-col overflow-x-clip">
       <a
@@ -12,11 +17,13 @@ export default function SiteLayout({ children }: LayoutProps<'/'>) {
       >
         Skip to content
       </a>
-      <Header />
+      <Header instagramUrl={instagram} instagramHandle={settings.instagramHandle} />
       <main id="main" className="flex-1">
         {children}
       </main>
-      <Footer />
+      <Footer instagramUrl={instagram} />
+      {/* The lightbox depends on the URL, so it streams in rather than blocking the shell */}
+      <Suspense fallback={null}>{modal}</Suspense>
       <CartHydrator />
     </div>
   )

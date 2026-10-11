@@ -24,6 +24,7 @@ export const siteSettings = defineType({
   groups: [
     { name: 'home', title: 'Home', default: true },
     { name: 'about', title: 'About' },
+    { name: 'pictures', title: 'Shop & commission pictures' },
     { name: 'shipping', title: 'Shipping' },
     { name: 'prints', title: 'Prints' },
     { name: 'commissions', title: 'Commissions' },
@@ -111,13 +112,42 @@ export const siteSettings = defineType({
         }),
       ],
     }),
+
+    // Pictures on the Shop and Commissions pages
     defineField({
-      name: 'closeUpArtwork',
-      title: '"Brushwork up close" painting',
-      description: 'Its close-ups are shown at the bottom of the About page.',
+      name: 'shopOriginalsArtwork',
+      title: 'Shop page: "Original paintings" door',
       type: 'reference',
       to: [{ type: 'artwork' }],
-      group: 'about',
+      group: 'pictures',
+    }),
+    defineField({
+      name: 'shopPrintsArtwork',
+      title: 'Shop page: "Fine art prints" door',
+      type: 'reference',
+      to: [{ type: 'artwork' }],
+      group: 'pictures',
+    }),
+    defineField({
+      name: 'shopCommissionsArtwork',
+      title: 'Shop page: "Commissions" door',
+      type: 'reference',
+      to: [{ type: 'artwork' }],
+      group: 'pictures',
+    }),
+    defineField({
+      name: 'commissionOilArtwork',
+      title: 'Commissions page: "in oil" picture',
+      type: 'reference',
+      to: [{ type: 'artwork' }],
+      group: 'pictures',
+    }),
+    defineField({
+      name: 'commissionDigitalArtwork',
+      title: 'Commissions page: "or digital" picture',
+      type: 'reference',
+      to: [{ type: 'artwork' }],
+      group: 'pictures',
     }),
 
     // Shipping
