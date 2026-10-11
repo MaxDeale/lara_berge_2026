@@ -133,6 +133,7 @@ export default async function HomePage() {
               <ArtworkCard
                 key={p._id}
                 artwork={p}
+                sizes="(min-width: 1120px) 340px, (min-width: 768px) 30vw, 230px"
                 className="shrink-0 basis-[250px] snap-start md:basis-auto"
               />
             ))}

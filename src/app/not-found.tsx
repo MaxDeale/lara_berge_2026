@@ -47,7 +47,7 @@ export default function NotFound() {
       <Image
         src={brand.doodads.galCat}
         alt=""
-        className="absolute right-6 bottom-8 h-auto w-[110px] md:right-[110px] md:bottom-10 md:w-[150px]"
+        className="cat absolute right-6 bottom-8 h-auto w-[110px] md:right-[110px] md:bottom-10 md:w-[150px]"
       />
     </main>
   )

@@ -41,7 +41,11 @@ function ContactFormRound({ replyTime, onAgain }: { replyTime: string; onAgain: 
         role="status"
         className="animate-fadeup border border-hairline bg-paper px-6 py-12 text-center md:px-10"
       >
-        <Image src={brand.doodads.galCat} alt="" className="mx-auto mb-4 block h-auto w-[120px]" />
+        <Image
+          src={brand.doodads.galCat}
+          alt=""
+          className="cat mx-auto mb-4 block h-auto w-[120px]"
+        />
         <h2
           ref={thanksRef}
           tabIndex={-1}

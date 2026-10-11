@@ -93,7 +93,7 @@ function Checkout({ collectionArea }: { collectionArea: string }) {
   if (lines.length === 0) {
     return (
       <div className="mx-auto max-w-[560px] px-6 py-24 text-center">
-        <Image src={brand.doodads.galCat} alt="" className="mx-auto h-auto w-[120px]" />
+        <Image src={brand.doodads.galCat} alt="" className="cat mx-auto h-auto w-[120px]" />
         <h1 className="mt-4 mb-2 font-display text-4xl font-normal">Your cart is empty</h1>
         {cancelledOrder && (
           <p className="m-0 mb-3 text-ink-soft">

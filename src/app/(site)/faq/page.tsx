@@ -42,7 +42,7 @@ export default async function FaqPage() {
         <Image
           src={brand.doodads.catBooks}
           alt=""
-          className="mt-10 block h-auto w-[110px] max-md:hidden"
+          className="cat mt-10 block h-auto w-[110px] max-md:hidden"
         />
       </div>
 

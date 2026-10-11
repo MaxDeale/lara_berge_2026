@@ -73,7 +73,7 @@ function Confirming({ gaveUp, reference }: { gaveUp: boolean; reference: string 
       className="mx-auto max-w-[620px] px-6 pt-20 pb-10 text-center"
     >
       <div aria-hidden="true" className="relative mx-auto w-[150px]">
-        <Image src={brand.doodads.greyCat} alt="" className="mx-auto block h-auto w-[120px]" />
+        <Image src={brand.doodads.greyCat} alt="" className="cat mx-auto block h-auto w-[120px]" />
         <StarIcon className="absolute top-0 -left-1.5 size-[22px] animate-twinkle text-star" />
         <StarIcon className="absolute top-10 -right-1 size-4 animate-twinkle text-star [animation-delay:-1.2s]" />
       </div>
@@ -100,7 +100,7 @@ function Confirming({ gaveUp, reference }: { gaveUp: boolean; reference: string 
 function NotPaid({ cancelled }: { cancelled: boolean }) {
   return (
     <div className="mx-auto max-w-[760px] animate-pop px-6 pt-14 text-center">
-      <Image src={brand.doodads.galCat} alt="" className="mx-auto block h-auto w-[140px]" />
+      <Image src={brand.doodads.galCat} alt="" className="cat mx-auto block h-auto w-[140px]" />
       <h1 className="mt-5 mb-3 font-display text-[38px] leading-[1.05] font-normal md:text-[50px]">
         {cancelled ? 'The payment was cancelled' : "The payment didn't go through"}
       </h1>
@@ -145,7 +145,7 @@ function Paid({
   return (
     <div className="mx-auto max-w-[760px] animate-pop px-6 pt-14 text-center">
       <div aria-hidden="true" className="relative mx-auto w-[170px]">
-        <Image src={brand.doodads.greyCat} alt="" className="mx-auto block h-auto w-[140px]" />
+        <Image src={brand.doodads.greyCat} alt="" className="cat mx-auto block h-auto w-[140px]" />
         <StarIcon className="absolute top-0 -left-1.5 size-[22px] animate-twinkle text-star" />
         <StarIcon className="absolute top-10 -right-1 size-4 animate-twinkle text-star [animation-delay:-1.2s]" />
       </div>

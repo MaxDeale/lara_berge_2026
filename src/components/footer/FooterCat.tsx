@@ -18,7 +18,7 @@ export function FooterCat({ alwaysShow = false }: { alwaysShow?: boolean }) {
       src={brand.doodads.greyCat}
       alt=""
       sizes="96px"
-      className="absolute right-7 bottom-[calc(100%-26px)] block h-auto w-[74px] md:right-16 md:bottom-[calc(100%-40px)] md:w-24"
+      className="cat absolute right-7 bottom-[calc(100%-26px)] block h-auto w-[74px] md:right-16 md:bottom-[calc(100%-40px)] md:w-24"
     />
   )
 }

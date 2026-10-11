@@ -75,7 +75,11 @@ export default async function AboutPage() {
         className="relative mx-auto max-w-[1120px] px-6 pt-20 md:pt-[110px]"
       >
         <div className="flex flex-wrap items-end gap-x-14 gap-y-8">
-          <Image src={brand.doodads.catBooks} alt="" className="block h-auto w-[120px] flex-none" />
+          <Image
+            src={brand.doodads.catBooks}
+            alt=""
+            className="cat block h-auto w-[120px] flex-none"
+          />
           <div className="min-w-0 flex-[1_1_600px]">
             <h2 id="notes-h" className="m-0 mb-6 font-display text-4xl font-normal">
               Studio notes

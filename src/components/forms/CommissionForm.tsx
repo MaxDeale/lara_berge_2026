@@ -73,7 +73,11 @@ function CommissionFormRound({
         role="status"
         className="animate-fadeup border border-hairline bg-paper px-6 py-14 text-center md:px-10"
       >
-        <Image src={brand.doodads.greyCat} alt="" className="mx-auto mb-4 block h-auto w-[110px]" />
+        <Image
+          src={brand.doodads.greyCat}
+          alt=""
+          className="cat mx-auto mb-4 block h-auto w-[110px]"
+        />
         <h2
           ref={thanksRef}
           tabIndex={-1}
