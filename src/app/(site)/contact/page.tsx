@@ -10,6 +10,7 @@ import { instagramUrl } from '@/lib/site'
 import { getSettings } from '@/sanity/queries'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact',
   description: 'Questions about a painting, an order or a collaboration? Send Lara a note.',
 }

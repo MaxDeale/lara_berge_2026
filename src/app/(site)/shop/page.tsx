@@ -10,6 +10,7 @@ import { getArtworks, getSettings } from '@/sanity/queries'
 import type { SanityImg } from '@/sanity/types'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/shop' },
   title: 'Shop',
   description:
     'One-of-a-kind oil paintings, signed fine art prints, and commissions by Lara Berge.',

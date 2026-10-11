@@ -9,6 +9,7 @@ import { getFaq } from '@/sanity/queries'
 import { FAQ_SECTIONS } from '@/sanity/constants'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/faq' },
   title: 'FAQ',
   description: 'Shipping, returns, prints, originals, commissions and payments: good to know.',
 }

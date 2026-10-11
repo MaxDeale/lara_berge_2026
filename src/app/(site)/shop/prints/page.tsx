@@ -5,6 +5,7 @@ import { or } from '@/lib/artwork'
 import { getArtworks, getSettings } from '@/sanity/queries'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/shop/prints' },
   title: 'Fine art prints',
   description:
     'Signed giclée prints of Lara Berge’s paintings and digital illustrations, in A4, A3 and A2.',

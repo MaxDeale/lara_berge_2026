@@ -1,4 +1,5 @@
-import { appendFile } from 'node:fs/promises'
+import { appendFile, mkdir } from 'node:fs/promises'
+import { dirname } from 'node:path'
 import { Resend } from 'resend'
 
 export type Email = {
@@ -17,6 +18,7 @@ export type Email = {
 export async function sendEmail(email: Email): Promise<{ sent: boolean }> {
   const outbox = process.env.EMAIL_TEST_OUTBOX
   if (outbox) {
+    await mkdir(dirname(outbox), { recursive: true })
     await appendFile(outbox, JSON.stringify({ ...email, at: new Date().toISOString() }) + '\n')
     return { sent: false }
   }

@@ -10,6 +10,7 @@ import { RichText } from '@/components/RichText'
 import { ProductImages } from '@/components/shop/ProductImages'
 import { ProductOptions } from '@/components/shop/ProductOptions'
 import { or } from '@/lib/artwork'
+import { artworkJsonLd, JsonLd, ogImage } from '@/lib/seo'
 import { getArtwork, getArtworks, getSettings } from '@/sanity/queries'
 
 export async function generateStaticParams() {
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: PageProps<'/shop/[slug]'>): P
       artwork.image.alt ??
       `${artwork.kind === 'digital' ? 'Digital illustration' : 'Oil painting'} by Lara Berge`,
     alternates: { canonical: `/shop/${artwork.slug}` },
+    openGraph: { type: 'website', images: [ogImage(artwork.image)!] },
   }
 }
 
@@ -71,6 +73,7 @@ async function Artwork({ params }: { params: PageProps<'/shop/[slug]'>['params']
 
   return (
     <div className="mx-auto max-w-[1240px] px-6 pt-10">
+      <JsonLd data={artworkJsonLd(artwork)} />
       <Breadcrumb
         className="mb-[26px]"
         items={[

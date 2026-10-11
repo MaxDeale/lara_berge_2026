@@ -8,10 +8,12 @@ import { BranchSign } from '@/components/HangingSign'
 import { RichText } from '@/components/RichText'
 import { or } from '@/lib/artwork'
 import { brand } from '@/lib/brand'
+import { JsonLd, personJsonLd } from '@/lib/seo'
 import { imageProps, objectPosition } from '@/sanity/image'
 import { getSettings } from '@/sanity/queries'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'About',
   description: 'Lara Berge paints small enchanted worlds in oil, and draws digital illustrations.',
 }
@@ -22,6 +24,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd data={personJsonLd(s)} />
       <section className="mx-auto max-w-[760px] px-6 pt-9 text-center">
         <BranchSign image={brand.signs.about} />
       </section>

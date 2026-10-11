@@ -11,6 +11,7 @@ import { getFaq, getSettings } from '@/sanity/queries'
 import type { SanityImg } from '@/sanity/types'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/commissions' },
   title: 'Commissions',
   description:
     'Commission an oil painting or a digital illustration from Lara Berge. Tell her your idea for a quote and a first sketch.',

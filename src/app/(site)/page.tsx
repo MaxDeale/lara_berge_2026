@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArtImage } from '@/components/ArtImage'
@@ -13,6 +14,8 @@ import { brand } from '@/lib/brand'
 import { cx } from '@/lib/cx'
 import { imageProps, objectPosition } from '@/sanity/image'
 import { getArtworks, getSettings } from '@/sanity/queries'
+
+export const metadata: Metadata = { alternates: { canonical: '/' } }
 
 // Stagger of the digital strip, as in the designs
 const STRIP_OFFSET = ['', 'mb-6 md:mb-10', '', 'md:mb-7', '']
@@ -47,8 +50,12 @@ export default async function HomePage() {
               <div className="flex flex-col items-center gap-0.5 max-md:hidden">
                 <p className="m-0 font-display text-[22px] italic">{hero.title}</p>
                 <p className="m-0 text-base text-muted">
-                  {or(hero.medium, 'Oil on canvas')} · {or(hero.dimensions, '[size]')} ·{' '}
-                  <InlineLink href={`/shop/${hero.slug}`}>see the painting</InlineLink>
+                  {hero.kind === 'digital'
+                    ? `${or(hero.medium, 'Digital illustration')} · `
+                    : `${or(hero.medium, 'Oil on canvas')} · ${or(hero.dimensions, '[size]')} · `}
+                  <InlineLink href={`/shop/${hero.slug}`}>
+                    {hero.kind === 'digital' ? 'see the illustration' : 'see the painting'}
+                  </InlineLink>
                 </p>
               </div>
             </>

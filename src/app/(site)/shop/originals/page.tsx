@@ -7,6 +7,7 @@ import { brand } from '@/lib/brand'
 import { getArtworks } from '@/sanity/queries'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/shop/originals' },
   title: 'Original paintings',
   description:
     'One-of-a-kind oil paintings by Lara Berge, signed and sent with a certificate of authenticity.',
