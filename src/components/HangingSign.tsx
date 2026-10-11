@@ -13,6 +13,8 @@ type HangingSignProps = {
   width: string
   /** Negative seconds stagger signs so they don't sway in unison */
   delay?: number
+  /** The sign is the first big thing on the page (page titles): load it straight away */
+  preload?: boolean
   className?: string
 }
 
@@ -26,6 +28,7 @@ export function HangingSign({
   href,
   width,
   delay = 0,
+  preload = false,
   className,
 }: HangingSignProps) {
   const style = { width, '--sway-delay': `${delay}s` } as React.CSSProperties
@@ -37,6 +40,7 @@ export function HangingSign({
     <Image
       src={image}
       alt={href ? alt : ''}
+      preload={preload}
       sizes={`(min-width: 768px) 210px, 110px`}
       className="block h-auto w-full drop-shadow-[0_10px_10px_rgba(59,53,48,0.18)]"
     />
@@ -70,7 +74,7 @@ export function BranchSign({ image, width = 190, className }: BranchSignProps) {
       <Branch variant="short" className="relative z-2 mx-auto w-[min(520px,92%)]" />
       {/* Overlap scales with the branch so the sign's string always meets the bark */}
       <div className="relative z-1 -mt-[min(40px,7%)] flex justify-center">
-        <HangingSign image={image} width={`${width}px`} />
+        <HangingSign image={image} width={`${width}px`} preload />
       </div>
     </div>
   )

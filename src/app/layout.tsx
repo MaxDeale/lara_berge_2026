@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { preconnect } from 'react-dom'
 import { ogImage } from '@/lib/seo'
 import { SITE_NAME, siteUrl } from '@/lib/site'
 import { getSettings } from '@/sanity/queries'
@@ -34,6 +35,8 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
+  // Artwork comes from Sanity's image CDN: open the connection while the HTML is still arriving
+  preconnect('https://cdn.sanity.io', { crossOrigin: 'anonymous' })
   return (
     <html lang="en-ZA" className={fontVariables}>
       <body>{children}</body>

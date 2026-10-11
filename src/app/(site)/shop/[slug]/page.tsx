@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
 import { Accordion, AccordionItem } from '@/components/Accordion'
 import { ArtworkCard } from '@/components/ArtworkCard'
 import { Breadcrumb } from '@/components/Breadcrumb'
@@ -31,28 +30,14 @@ export async function generateMetadata({ params }: PageProps<'/shop/[slug]'>): P
   }
 }
 
-export default function ArtworkPage({ params }: PageProps<'/shop/[slug]'>) {
-  return (
-    <Suspense fallback={<ArtworkSkeleton />}>
-      <Artwork params={params} />
-    </Suspense>
-  )
-}
+/**
+ * Every artwork is prerendered (generateStaticParams), so the page is awaited directly: wrapping
+ * it in <Suspense> made the content stream in after a skeleton and shifted the layout. Links to
+ * artworks use prefetch, so client navigations still arrive instantly.
+ */
+export const instant = false
 
-/** Same footprint as the page, so nothing jumps when the content streams in */
-function ArtworkSkeleton() {
-  return (
-    <div aria-hidden="true" className="mx-auto max-w-[1240px] px-6 pt-10">
-      <div className="mb-[26px] h-6" />
-      <div className="flex flex-wrap items-start gap-x-[72px] gap-y-12">
-        <div className="aspect-[4/5] min-w-0 flex-[1_1_560px] bg-paper shadow-arch" />
-        <div className="min-w-0 flex-[1_1_420px]" />
-      </div>
-    </div>
-  )
-}
-
-async function Artwork({ params }: { params: PageProps<'/shop/[slug]'>['params'] }) {
+export default async function ArtworkPage({ params }: PageProps<'/shop/[slug]'>) {
   const { slug } = await params
   const [artwork, all, s] = await Promise.all([getArtwork(slug), getArtworks(), getSettings()])
   if (!artwork) notFound()
