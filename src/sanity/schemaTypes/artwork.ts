@@ -167,6 +167,13 @@ export const artwork = defineType({
           hidden: true,
           readOnly: true,
         }),
+        defineField({
+          name: 'reservedBy',
+          title: 'Reserved by order',
+          type: 'string',
+          hidden: true,
+          readOnly: true,
+        }),
       ],
       validation: (rule) =>
         rule

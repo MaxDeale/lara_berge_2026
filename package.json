@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
     "test": "vitest run",
-    "seed": "sanity exec scripts/seed.ts --with-user-token --"
+    "seed": "sanity exec scripts/seed.ts --with-user-token --",
+    "seed:test-prices": "sanity exec scripts/test-prices.ts --with-user-token --"
   },
   "dependencies": {
     "@sanity/icons": "^5.2.3",

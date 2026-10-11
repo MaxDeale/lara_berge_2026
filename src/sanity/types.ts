@@ -41,6 +41,13 @@ export type ArtworkDetail = ArtworkCard & {
   variants: PrintVariant[]
 }
 
+export type CatalogItem = Pick<
+  ArtworkCard,
+  '_id' | 'title' | 'slug' | 'kind' | 'dimensions' | 'image' | 'original'
+> & {
+  variants: PrintVariant[]
+}
+
 export type ShippingRate = { label?: string; note?: string; price?: number | null }
 
 export type StudioNote = { label?: string; text?: string }

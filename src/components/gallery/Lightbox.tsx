@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ArtImage } from '@/components/ArtImage'
 import { ButtonLink, TextLink } from '@/components/Button'
@@ -35,6 +35,9 @@ const SWIPE_PX = 50
 /** Full-screen artwork viewer: prev/next, arrow keys, Escape, swipe, and a shareable URL. */
 export function Lightbox({ items, startIndex, mode }: LightboxProps) {
   const router = useRouter()
+  // Next keeps a parallel-route modal mounted after you navigate elsewhere, so the viewer
+  // hides itself whenever the address is no longer a gallery piece
+  const visible = usePathname().startsWith('/gallery/')
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [index, setIndex] = useState(startIndex)
   const touchX = useRef<number | null>(null)
@@ -54,7 +57,7 @@ export function Lightbox({ items, startIndex, mode }: LightboxProps) {
   // and it reopens as a modal if the route is shown again.
   useLayoutEffect(() => {
     const dialog = dialogRef.current
-    if (!dialog) return
+    if (!dialog || !visible) return
     if (!dialog.matches(':modal')) {
       if (dialog.open) dialog.close()
       dialog.showModal()
@@ -65,14 +68,17 @@ export function Lightbox({ items, startIndex, mode }: LightboxProps) {
       dialog.close()
       root.style.overflow = ''
     }
-  }, [])
+  }, [visible])
 
   // Keep the address bar on the piece being shown, without a navigation
   useEffect(() => {
+    if (!visible) return
     const path = `/gallery/${items[index].slug}`
     if (window.location.pathname !== path)
       window.history.replaceState(window.history.state, '', path)
-  }, [index, items])
+  }, [index, items, visible])
+
+  if (!visible) return null
 
   function onKeyDown(event: React.KeyboardEvent) {
     if (event.key === 'ArrowRight') go(1)

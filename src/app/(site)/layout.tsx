@@ -1,13 +1,14 @@
 import '../globals.css'
 import { Suspense } from 'react'
+import { CartDrawer } from '@/components/cart/CartDrawer'
 import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
 import { CartHydrator } from '@/lib/cart/CartHydrator'
 import { instagramUrl } from '@/lib/site'
-import { getSettings } from '@/sanity/queries'
+import { getCatalog, getSettings } from '@/sanity/queries'
 
 export default async function SiteLayout({ children, modal }: LayoutProps<'/'>) {
-  const settings = await getSettings()
+  const [settings, catalog] = await Promise.all([getSettings(), getCatalog()])
   const instagram = instagramUrl(settings.instagramHandle)
   return (
     <div className="flex min-h-dvh flex-col overflow-x-clip">
@@ -24,6 +25,7 @@ export default async function SiteLayout({ children, modal }: LayoutProps<'/'>) 
       <Footer instagramUrl={instagram} />
       {/* The lightbox depends on the URL, so it streams in rather than blocking the shell */}
       <Suspense fallback={null}>{modal}</Suspense>
+      <CartDrawer catalog={catalog} />
       <CartHydrator />
     </div>
   )

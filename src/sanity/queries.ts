@@ -1,6 +1,6 @@
 import { defineQuery } from 'next-sanity'
 import { sanityFetch } from './client'
-import type { ArtworkCard, ArtworkDetail, FaqItem, LegalPage, Settings } from './types'
+import type { ArtworkCard, ArtworkDetail, CatalogItem, FaqItem, LegalPage, Settings } from './types'
 
 const IMG = `{
   "url": asset->url,
@@ -40,6 +40,21 @@ export const ARTWORK_QUERY = defineQuery(`*[${LISTED} && slug.current == $slug][
   )
 }`)
 
+/** Everything the cart drawer needs to show a line. Display only: checkout re-prices on the server. */
+export const CATALOG_QUERY = defineQuery(`*[${LISTED}] {
+  _id,
+  title,
+  "slug": slug.current,
+  kind,
+  dimensions,
+  "image": mainImage${IMG},
+  "original": select(kind == "painting" => original{forSale, price, status}, null),
+  "variants": select(
+    prints.enabled == true => prints.variants[active != false]{ size, dimensions, price },
+    []
+  )
+}`)
+
 export const SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0] {
   ...,
   "heroArtwork": heroArtwork->{ ${CARD} },
@@ -62,6 +77,8 @@ export const LEGAL_QUERY = defineQuery(
 )
 
 export const getArtworks = () => sanityFetch<ArtworkCard[]>(ARTWORKS_QUERY, {}, ['artwork'])
+
+export const getCatalog = () => sanityFetch<CatalogItem[]>(CATALOG_QUERY, {}, ['artwork'])
 
 export const getArtwork = (slug: string) =>
   sanityFetch<ArtworkDetail | null>(ARTWORK_QUERY, { slug }, ['artwork'])
