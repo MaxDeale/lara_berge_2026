@@ -10,9 +10,12 @@ import galCat from '../../public/brand/galcat.png'
 import catBooks from '../../public/brand/catbooks.png'
 import shroom from '../../public/brand/shroom.png'
 import tree from '../../public/brand/tree.png'
+import branch from '../../public/brand/branch.png'
 
 export const brand = {
   logoName,
+  /** Lara's painted limb the Home signs hang from */
+  branch,
   signs: {
     gallery: signGallery,
     shop: signShop,

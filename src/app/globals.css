@@ -61,6 +61,7 @@
 
   --animate-reveal: reveal 1.8s var(--ease-story) both;
   --animate-drift: drift 28s ease-in-out infinite alternate;
+  --animate-drift-soft: drift-soft 28s ease-in-out infinite alternate;
   --animate-rise: rise 9s linear infinite;
   /* --sway-delay staggers idle sway without delaying the hover swing */
   --animate-sway: sway 6s ease-in-out var(--sway-delay, 0s) infinite;
@@ -97,6 +98,15 @@
     }
     100% {
       transform: scale(1.16) translate(-2%, -1.5%);
+    }
+  }
+  /* Gentler drift for a tall hero shown whole-ish on desktop, so it doesn't zoom back in */
+  @keyframes drift-soft {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.05) translate(-1%, -1%);
     }
   }
   @keyframes rise {

@@ -78,10 +78,11 @@ export default async function HomePage() {
 
       <section
         aria-label="Wander in"
-        className="relative mx-auto max-w-[1160px] pt-[52px] md:px-6 md:pt-[84px]"
+        className="relative mx-auto max-w-[1160px] pt-10 md:px-6 md:pt-16"
       >
         <Branch variant="wide" className="relative z-2" />
-        <div className="relative z-1 -mt-[26px] flex justify-around px-2 md:-mt-[58px] md:flex-wrap md:justify-center md:gap-x-[9%] md:gap-y-6 md:px-0">
+        {/* Overlap is a % of width so the strings stay on the bark as the painted limb scales */}
+        <div className="relative z-1 -mt-[9%] flex justify-around px-2 md:-mt-[8%] md:flex-wrap md:justify-center md:gap-x-[9%] md:gap-y-6 md:px-0">
           <HangingSign
             image={brand.signs.gallery}
             alt="Gallery"

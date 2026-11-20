@@ -64,6 +64,29 @@ type HeroProps = {
  * through it, and the bottom edge curves away.
  */
 export function Hero({ image, motion = 'drift-fireflies', caption, className }: HeroProps) {
+  const ratio = image.width && image.height ? image.width / image.height : undefined
+  // A tall piece in the wide desktop box would be cropped to a sliver by object-cover, so on
+  // desktop show most of it, centred over a soft blur of its own colours.
+  const tall = ratio !== undefined && ratio < 1
+  const drifts = motion !== 'still'
+
+  // The tall backdrop uses the same sizes, so the browser fetches one file for both layers
+  const sizes = '(min-width: 1360px) 1312px, 100vw'
+
+  const art = (
+    <ArtImage
+      src={image.src}
+      alt={image.alt}
+      fill
+      preload
+      sizes={sizes}
+      placeholder={image.blurDataURL ? 'blur' : 'empty'}
+      blurDataURL={image.blurDataURL}
+      className={cx('object-cover', drifts && !tall && 'animate-drift')}
+      style={{ objectPosition: image.objectPosition ?? '50% 42%' }}
+    />
+  )
+
   return (
     <section aria-label="Featured painting" className={className}>
       <div
@@ -73,17 +96,39 @@ export function Hero({ image, motion = 'drift-fireflies', caption, className }: 
           'md:aspect-[16/8] md:max-h-[760px] md:min-h-[360px] md:[--rise-x:36px] md:[--rise-y:-320px] md:[clip-path:ellipse(78%_100%_at_50%_0%)]',
         )}
       >
-        <ArtImage
-          src={image.src}
-          alt={image.alt}
-          fill
-          preload
-          sizes="(min-width: 1360px) 1312px, 100vw"
-          placeholder={image.blurDataURL ? 'blur' : 'empty'}
-          blurDataURL={image.blurDataURL}
-          className={cx('object-cover', motion !== 'still' && 'animate-drift')}
-          style={{ objectPosition: image.objectPosition ?? '50% 42%' }}
-        />
+        {tall ? (
+          <>
+            {/* Desktop backdrop: the painting itself, cropped wide and blurred. Hidden (and,
+                being lazy, never fetched) on phones. */}
+            <ArtImage
+              src={image.src}
+              alt=""
+              fill
+              sizes={sizes}
+              className="scale-125 object-cover blur-2xl brightness-[0.8] max-md:hidden"
+              style={{ objectPosition: image.objectPosition ?? '50% 42%' }}
+            />
+            {/* Phone: the box is nearly as tall as the art, so it fills it (cover).
+                Desktop: the art stands a third taller than the box (antler tips to snow),
+                centred, its edges feathered into the backdrop. */}
+            <div
+              className={cx(
+                'absolute inset-0',
+                'md:inset-auto md:top-[-12%] md:left-1/2 md:h-[133%] md:-translate-x-1/2',
+                'md:[mask-image:linear-gradient(to_right,transparent,#000_20%,#000_80%,transparent)]',
+              )}
+              style={{ aspectRatio: ratio }}
+            >
+              <div
+                className={cx('absolute inset-0', drifts && 'animate-drift md:animate-drift-soft')}
+              >
+                {art}
+              </div>
+            </div>
+          </>
+        ) : (
+          art
+        )}
         {motion === 'drift-fireflies' && (
           <>
             <Motes motes={MOTES_PHONE} className="md:hidden" />
