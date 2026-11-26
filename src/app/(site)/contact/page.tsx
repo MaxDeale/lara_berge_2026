@@ -23,7 +23,7 @@ export default async function ContactPage() {
   return (
     <>
       <section className="mx-auto max-w-[760px] px-6 pt-9 text-center">
-        <BranchSign image={brand.signs.contact} width={200} />
+        <BranchSign sign={brand.signs.contact} width={200} />
         <h1 className="mt-[30px] mb-2 font-display text-[36px] leading-[1.1] font-normal md:text-[44px]">
           Send a little note
         </h1>

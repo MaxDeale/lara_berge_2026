@@ -3,15 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArtImage } from '@/components/ArtImage'
 import { ArtworkCard } from '@/components/ArtworkCard'
-import { Branch } from '@/components/Branch'
 import { ButtonLink, InlineLink, TextLink } from '@/components/Button'
-import { Eyebrow } from '@/components/Eyebrow'
 import { hoverZoom } from '@/components/frames'
-import { HangingSign } from '@/components/HangingSign'
+import { LimbSigns } from '@/components/HangingSign'
 import { Hero } from '@/components/Hero'
 import { or } from '@/lib/artwork'
 import { brand } from '@/lib/brand'
 import { cx } from '@/lib/cx'
+import { SITE_NAME } from '@/lib/site'
 import { imageProps, objectPosition } from '@/sanity/image'
 import { getArtworks, getSettings } from '@/sanity/queries'
 
@@ -63,50 +62,43 @@ export default async function HomePage() {
         />
       )}
 
-      <section
-        aria-label="Introduction"
-        className="mx-auto max-w-[760px] px-[22px] pt-14 text-center md:px-6 md:pt-24"
-      >
-        <h1 className="m-0 mb-3.5 font-display text-[36px] leading-[1.08] font-normal md:mb-[22px] md:text-[clamp(36px,5vw,58px)]">
-          {or(settings.introHeading, 'Small enchanted worlds,')}{' '}
-          <em className="text-mauve">{or(settings.introHeadingItalic, 'painted by hand')}</em>
-        </h1>
-        <p className="m-0 mx-auto max-w-[560px] text-[17px] text-ink-soft md:text-xl">
-          {or(settings.introText, '[A line or two about the work.]')}
-        </p>
-      </section>
+      {/* Lara asked for the welcome text to go (Nov 2026). It shows again if she fills in
+          the Welcome fields in Studio. */}
+      {settings.introHeading || settings.introText ? (
+        <section
+          aria-label="Introduction"
+          className="mx-auto max-w-[760px] px-[22px] pt-14 text-center md:px-6 md:pt-24"
+        >
+          <h1 className="m-0 mb-3.5 font-display text-[36px] leading-[1.08] font-normal md:mb-[22px] md:text-[clamp(36px,5vw,58px)]">
+            {settings.introHeading}{' '}
+            {settings.introHeadingItalic && (
+              <em className="text-mauve">{settings.introHeadingItalic}</em>
+            )}
+          </h1>
+          {settings.introText && (
+            <p className="m-0 mx-auto max-w-[560px] text-[17px] text-ink-soft md:text-xl">
+              {settings.introText}
+            </p>
+          )}
+        </section>
+      ) : (
+        <h1 className="sr-only">{SITE_NAME}</h1>
+      )}
 
       <section
         aria-label="Wander in"
         className="relative mx-auto max-w-[1160px] pt-10 md:px-6 md:pt-16"
       >
-        <Branch variant="wide" className="relative z-2" />
-        {/* Overlap is a % of width so the strings stay on the bark as the painted limb scales */}
-        <div className="relative z-1 -mt-[9%] flex justify-around px-2 md:-mt-[8%] md:flex-wrap md:justify-center md:gap-x-[9%] md:gap-y-6 md:px-0">
-          <HangingSign
-            image={brand.signs.gallery}
-            alt="Gallery"
-            href="/gallery"
-            width="clamp(104px, 18vw, 210px)"
-            delay={-1.5}
-          />
-          <HangingSign
-            image={brand.signs.shop}
-            alt="Shop"
-            href="/shop"
-            width="clamp(104px, 18vw, 210px)"
-            delay={-3.2}
-            className="md:mt-2.5"
-          />
-          <HangingSign
-            image={brand.signs.about}
-            alt="About"
-            href="/about"
-            width="clamp(104px, 18vw, 210px)"
-            delay={-4.6}
-            className="md:mt-0.5"
-          />
-        </div>
+        {/* Each string meets the bark where it hangs: the limb rises to the right */}
+        <LimbSigns
+          className="[--sign-w:27cqw] md:[--sign-w:min(19cqw,210px)]"
+          signWidth="var(--sign-w)"
+          signs={[
+            { sign: brand.signs.gallery, alt: 'Gallery', href: '/gallery', at: 0.2, delay: -1.5 },
+            { sign: brand.signs.shop, alt: 'Shop', href: '/shop', at: 0.5, delay: -3.2 },
+            { sign: brand.signs.about, alt: 'About', href: '/about', at: 0.8, delay: -4.6 },
+          ]}
+        />
       </section>
 
       {newPaintings.length > 0 && (
@@ -116,7 +108,6 @@ export default async function HomePage() {
         >
           <div className="mb-[18px] flex flex-wrap items-baseline justify-between gap-3 px-[22px] md:mb-9 md:items-end md:px-0">
             <div>
-              <Eyebrow className="mb-1 max-md:hidden">fresh off the easel</Eyebrow>
               <h2
                 id="latest-h"
                 className="m-0 font-display text-[30px] leading-[1.1] font-normal md:text-[40px]"
@@ -142,6 +133,38 @@ export default async function HomePage() {
         </section>
       )}
 
+      {newPaintings.length === 0 && (
+        <section
+          aria-labelledby="classes-h"
+          className="mx-auto max-w-[1120px] px-[22px] pt-16 md:px-6 md:pt-[104px]"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-6 border-y border-hairline py-10 md:py-14">
+            <div className="flex flex-[1_1_460px] items-center gap-[22px]">
+              <Image
+                src={brand.doodads.catBooks}
+                alt=""
+                className="block h-auto w-[84px] flex-none max-md:hidden"
+              />
+              <div>
+                <h2
+                  id="classes-h"
+                  className="m-0 mb-2 font-display text-[30px] leading-[1.1] font-normal md:text-[40px]"
+                >
+                  Classes
+                </h2>
+                <p className="m-0 text-[17px] text-ink-soft">
+                  Learn oil painting or digital illustration with me, online through Preply or in
+                  private classes.
+                </p>
+              </div>
+            </div>
+            <ButtonLink href="/classes" className="max-md:min-h-[52px] max-md:w-full">
+              See the classes
+            </ButtonLink>
+          </div>
+        </section>
+      )}
+
       {digital.length > 0 && (
         <section
           aria-labelledby="digital-h"
@@ -154,20 +177,13 @@ export default async function HomePage() {
                 alt=""
                 className="-mb-1.5 block h-auto w-[78px] max-md:hidden"
               />
-              <div>
-                <Eyebrow className="mb-0 md:mb-1">pixels &amp; ink</Eyebrow>
-                <h2
-                  id="digital-h"
-                  className="m-0 font-display text-[30px] leading-[1.1] font-normal md:text-[40px]"
-                >
-                  Digital illustration
-                </h2>
-              </div>
+              <h2
+                id="digital-h"
+                className="m-0 font-display text-[30px] leading-[1.1] font-normal md:text-[40px]"
+              >
+                Digital illustration
+              </h2>
             </div>
-            <p className="m-0 max-w-[430px] text-[17px] text-ink-soft max-md:hidden">
-              Witches, stags, octopuses with lanterns and one very patient bear. Order a print, or
-              commission an illustration of your own.
-            </p>
           </div>
           <div className="strip flex snap-x snap-mandatory scroll-px-[22px] items-end gap-3.5 overflow-x-auto px-[22px] pt-2 pb-2.5 md:snap-none md:gap-[22px] md:px-0 md:pb-[18px]">
             {digital.map((d, i) => (

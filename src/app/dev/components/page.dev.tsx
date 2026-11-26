@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Accordion, AccordionItem } from '@/components/Accordion'
 import { ArtImage } from '@/components/ArtImage'
-import { Branch } from '@/components/Branch'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Button, ButtonLink, InlineLink, TextButton, TextLink } from '@/components/Button'
 import { Eyebrow } from '@/components/Eyebrow'
@@ -19,7 +18,7 @@ import {
   TextInput,
 } from '@/components/forms/fields'
 import { ArchFrame, hoverZoom, Mat, PrintOnTable } from '@/components/frames'
-import { BranchSign, HangingSign } from '@/components/HangingSign'
+import { BranchSign, LimbSigns } from '@/components/HangingSign'
 import { Header } from '@/components/header/Header'
 import { Hero, type HeroMotion } from '@/components/Hero'
 import { LockIcon } from '@/components/icons'
@@ -198,41 +197,22 @@ export default function ComponentsPage() {
 
       <Section
         title="Branch and HangingSign"
-        note="Home uses the wide branch with link signs; page titles use the short branch."
+        note="Home hangs link signs along the painted limb; page titles hang one from its middle."
       >
-        <div className="mx-auto max-w-[1160px]">
-          <Branch variant="wide" className="relative z-2" />
-          <div className="relative z-1 -mt-[26px] flex justify-around px-2 md:-mt-[58px] md:flex-wrap md:justify-center md:gap-x-[9%] md:gap-y-6 md:px-0">
-            <HangingSign
-              image={brand.signs.gallery}
-              alt="Gallery"
-              href="/gallery"
-              width="clamp(104px, 18vw, 210px)"
-              delay={-1.5}
-            />
-            <HangingSign
-              image={brand.signs.shop}
-              alt="Shop"
-              href="/shop"
-              width="clamp(104px, 18vw, 210px)"
-              delay={-3.2}
-              className="md:mt-2.5"
-            />
-            <HangingSign
-              image={brand.signs.about}
-              alt="About"
-              href="/about"
-              width="clamp(104px, 18vw, 210px)"
-              delay={-4.6}
-              className="md:mt-0.5"
-            />
-          </div>
-        </div>
+        <LimbSigns
+          className="mx-auto max-w-[1160px] [--sign-w:27cqw] md:[--sign-w:min(19cqw,210px)]"
+          signWidth="var(--sign-w)"
+          signs={[
+            { sign: brand.signs.gallery, alt: 'Gallery', href: '/gallery', at: 0.2, delay: -1.5 },
+            { sign: brand.signs.shop, alt: 'Shop', href: '/shop', at: 0.5, delay: -3.2 },
+            { sign: brand.signs.about, alt: 'About', href: '/about', at: 0.8, delay: -4.6 },
+          ]}
+        />
         <div className="mt-20 grid gap-16 sm:grid-cols-2">
-          <BranchSign image={brand.signs.gallery} />
-          <BranchSign image={brand.signs.shop} />
-          <BranchSign image={brand.signs.about} />
-          <BranchSign image={brand.signs.contact} width={200} />
+          <BranchSign sign={brand.signs.gallery} />
+          <BranchSign sign={brand.signs.shop} />
+          <BranchSign sign={brand.signs.about} />
+          <BranchSign sign={brand.signs.contact} width={200} />
         </div>
       </Section>
 

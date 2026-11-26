@@ -1,4 +1,5 @@
 import { defineQuery } from 'next-sanity'
+import { SHOW_PAINTINGS } from '@/lib/site'
 import { sanityFetch } from './client'
 import type { ArtworkCard, ArtworkDetail, CatalogItem, FaqItem, LegalPage, Settings } from './types'
 
@@ -26,7 +27,12 @@ const CARD = `
   "printsFrom": math::min(prints.variants[active != false && defined(price)].price)
 `
 
-const LISTED = `_type == "artwork" && defined(slug.current) && defined(mainImage.asset)`
+// $paintings is SHOW_PAINTINGS: while it's false, oil paintings are left out of every list
+const LISTED = `_type == "artwork" && defined(slug.current) && defined(mainImage.asset) && ($paintings || kind != "painting")`
+
+/** A Settings picture taken from an artwork, or null while that artwork is a hidden painting */
+const artImage = (ref: string) =>
+  `select($paintings || ${ref}->kind != "painting" => ${ref}->mainImage${IMG})`
 
 export const ARTWORKS_QUERY = defineQuery(`*[${LISTED}] | order(orderRank) { ${CARD} }`)
 
@@ -57,14 +63,14 @@ export const CATALOG_QUERY = defineQuery(`*[${LISTED}] {
 
 export const SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0] {
   ...,
-  "heroArtwork": heroArtwork->{ ${CARD} },
+  "heroArtwork": select($paintings || heroArtwork->kind != "painting" => heroArtwork->{ ${CARD} }),
   "portrait": portrait${IMG},
   "aboutPhoto": aboutPhoto${IMG},
-  "shopOriginalsImage": shopOriginalsArtwork->mainImage${IMG},
-  "shopPrintsImage": shopPrintsArtwork->mainImage${IMG},
-  "shopCommissionsImage": shopCommissionsArtwork->mainImage${IMG},
-  "commissionOilImage": commissionOilArtwork->mainImage${IMG},
-  "commissionDigitalImage": commissionDigitalArtwork->mainImage${IMG},
+  "shopOriginalsImage": ${artImage('shopOriginalsArtwork')},
+  "shopPrintsImage": ${artImage('shopPrintsArtwork')},
+  "shopCommissionsImage": ${artImage('shopCommissionsArtwork')},
+  "commissionOilImage": ${artImage('commissionOilArtwork')},
+  "commissionDigitalImage": ${artImage('commissionDigitalArtwork')},
   "seoImage": seoImage${IMG}
 }`)
 
@@ -76,15 +82,17 @@ export const LEGAL_QUERY = defineQuery(
   `*[_type == "legalPage" && slug.current == $slug][0] { title, body }`,
 )
 
-export const getArtworks = () => sanityFetch<ArtworkCard[]>(ARTWORKS_QUERY, {}, ['artwork'])
+const shown = { paintings: SHOW_PAINTINGS }
 
-export const getCatalog = () => sanityFetch<CatalogItem[]>(CATALOG_QUERY, {}, ['artwork'])
+export const getArtworks = () => sanityFetch<ArtworkCard[]>(ARTWORKS_QUERY, shown, ['artwork'])
+
+export const getCatalog = () => sanityFetch<CatalogItem[]>(CATALOG_QUERY, shown, ['artwork'])
 
 export const getArtwork = (slug: string) =>
-  sanityFetch<ArtworkDetail | null>(ARTWORK_QUERY, { slug }, ['artwork'])
+  sanityFetch<ArtworkDetail | null>(ARTWORK_QUERY, { ...shown, slug }, ['artwork'])
 
 export const getSettings = async () =>
-  (await sanityFetch<Settings | null>(SETTINGS_QUERY, {}, ['siteSettings', 'artwork'])) ?? {}
+  (await sanityFetch<Settings | null>(SETTINGS_QUERY, shown, ['siteSettings', 'artwork'])) ?? {}
 
 export const getFaq = (page: 'faq' | 'commissions') =>
   sanityFetch<FaqItem[]>(FAQ_QUERY, { showOn: [page, 'both'] }, ['faqItem'])

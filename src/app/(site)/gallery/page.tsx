@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   description: 'Oil paintings and digital illustrations by Lara Berge.',
 }
 
-const MIN_PAINTING_TILES = 6
-
 export default async function GalleryPage() {
   const artworks = await getArtworks()
   const paintings = artworks.filter((a) => a.kind === 'painting')
@@ -24,19 +22,17 @@ export default async function GalleryPage() {
         <h1 id="gal-h" className="sr-only">
           Gallery
         </h1>
-        <BranchSign image={brand.signs.gallery} />
+        <BranchSign sign={brand.signs.gallery} />
         <p className="mx-auto mt-[26px] mb-0 max-w-[540px] text-ink-soft">
-          Oil paintings, and digital illustrations drawn with a stylus. Tap any piece to see it up
-          close.
+          {paintings.length
+            ? 'Oil paintings, and digital illustrations drawn with a stylus.'
+            : 'Digital illustrations, drawn with a stylus.'}{' '}
+          Tap any piece to see it up close.
         </p>
       </section>
 
       <section aria-label="Gallery sections" className="mx-auto max-w-[1240px] px-6 pt-12">
-        <GalleryView
-          paintings={paintings}
-          digital={digital}
-          slots={Math.max(0, MIN_PAINTING_TILES - paintings.length)}
-        />
+        <GalleryView paintings={paintings} digital={digital} />
       </section>
 
       <section aria-labelledby="cta-h" className="mx-auto mt-20 max-w-[1120px] px-6 md:mt-[110px]">
@@ -50,12 +46,13 @@ export default async function GalleryPage() {
             </h2>
             <p className="m-0 text-ink-soft">
               Most pieces come as signed fine art prints, and Lara takes commissions in both oil and
-              digital.
+              digital. Or learn to make your own in one of her classes.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <ButtonLink href="/shop/prints">Shop prints</ButtonLink>
             <TextLink href="/commissions">commission a piece →</TextLink>
+            <TextLink href="/classes">take a class →</TextLink>
           </div>
         </div>
       </section>

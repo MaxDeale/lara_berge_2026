@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
+import { SHOW_PAINTINGS } from '../src/lib/site'
 
 const ROUTES = [
   '/',
@@ -9,12 +10,11 @@ const ROUTES = [
   '/about',
   '/contact',
   '/shop',
-  '/shop/originals',
+  ...(SHOW_PAINTINGS ? ['/shop/originals', '/shop/firefly', '/shop/lantern'] : []),
   '/shop/prints',
-  '/shop/firefly',
-  '/shop/lantern',
   '/shop/octopus',
   '/commissions',
+  '/classes',
   '/faq',
   '/terms',
   '/privacy',

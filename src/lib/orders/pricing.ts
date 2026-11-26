@@ -1,6 +1,7 @@
 import { readClient } from '@/sanity/client'
 import type { OriginalStatus, PrintSize, SanityImg } from '@/sanity/types'
 import type { CartLine } from '@/lib/cart/lines'
+import { SHOW_PAINTINGS } from '@/lib/site'
 import type { DeliveryMethod } from './schema'
 
 type FreshArtwork = {
@@ -71,7 +72,7 @@ export async function priceCart(cart: CartLine[], method: DeliveryMethod): Promi
     > | null
   }>(
     `{
-      "artworks": *[_type == "artwork" && _id in $ids]{
+      "artworks": *[_type == "artwork" && _id in $ids && ($paintings || kind != "painting")]{
         _id, _rev, title, "slug": slug.current, kind,
         "image": mainImage{ "url": asset->url, "lqip": asset->metadata.lqip, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height, alt, "hotspot": hotspot{x, y} },
         original{ forSale, price, status, reservedUntil },
@@ -79,7 +80,7 @@ export async function priceCart(cart: CartLine[], method: DeliveryMethod): Promi
       },
       "settings": *[_id == "siteSettings"][0]{ shippingCourier, shippingCollect, shippingInternational }
     }`,
-    { ids },
+    { ids, paintings: SHOW_PAINTINGS },
     { cache: 'no-store' },
   )
 

@@ -6,6 +6,7 @@ import { FooterCat } from './FooterCat'
 
 const LINKS = [
   { label: 'Commissions', href: '/commissions' },
+  { label: 'Classes', href: '/classes' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Shipping & returns', href: '/faq#shipping' },
   { label: 'Terms', href: '/terms' },

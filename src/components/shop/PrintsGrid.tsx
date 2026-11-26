@@ -29,12 +29,21 @@ export function PrintsGrid({
 }) {
   const [filter, setFilter] = useState<Filter>('all')
   const shown = prints.filter((p) => filter === 'all' || p.kind === filter)
+  // Both kinds or nothing to filter by (paintings can be hidden, see SHOW_PAINTINGS)
+  const filterable = new Set(prints.map((p) => p.kind)).size > 1
 
   return (
     <>
       <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
         {heading}
-        <FilterChips label="Filter prints" value={filter} onChange={setFilter} options={FILTERS} />
+        {filterable && (
+          <FilterChips
+            label="Filter prints"
+            value={filter}
+            onChange={setFilter}
+            options={FILTERS}
+          />
+        )}
       </div>
       {details}
       <div className="grid grid-cols-[repeat(auto-fill,minmax(min(250px,100%),1fr))] gap-x-8 gap-y-[52px] pt-11 max-sm:grid-cols-2 max-sm:gap-x-4 max-sm:gap-y-10">
