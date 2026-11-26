@@ -26,7 +26,7 @@ export default async function AboutPage() {
     <>
       <JsonLd data={personJsonLd(s)} />
       <section className="mx-auto max-w-[760px] px-6 pt-9 text-center">
-        <BranchSign image={brand.signs.about} />
+        <BranchSign sign={brand.signs.about} />
       </section>
 
       <section
@@ -47,9 +47,11 @@ export default async function AboutPage() {
               <div className="aspect-[3/4]" />
             )}
           </ArchFrame>
-          <figcaption className="mt-3 text-center text-base text-muted italic">
-            {or(s.aboutPhotoCaption, '[caption]')}
-          </figcaption>
+          {s.aboutPhotoCaption && (
+            <figcaption className="mt-3 text-center text-base text-muted italic">
+              {s.aboutPhotoCaption}
+            </figcaption>
+          )}
         </figure>
         <div className="min-w-0 flex-[1_1_440px] pt-3 leading-[1.65]">
           <Eyebrow className="mb-1.5">{or(s.aboutEyebrow, 'the long version')}</Eyebrow>

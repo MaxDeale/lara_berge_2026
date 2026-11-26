@@ -1,14 +1,15 @@
 import type { MetadataRoute } from 'next'
-import { siteUrl } from '@/lib/site'
+import { SHOW_PAINTINGS, siteUrl } from '@/lib/site'
 import { getArtworks } from '@/sanity/queries'
 
 const PAGES = [
   '',
   '/gallery',
   '/shop',
-  '/shop/originals',
+  ...(SHOW_PAINTINGS ? ['/shop/originals'] : []),
   '/shop/prints',
   '/commissions',
+  '/classes',
   '/about',
   '/contact',
   '/faq',

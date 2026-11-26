@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { ArtImage } from '@/components/ArtImage'
 import { ArchFrame } from '@/components/frames'
 import { BranchSign } from '@/components/HangingSign'
 import { formatZAR } from '@/lib/format'
 import { brand } from '@/lib/brand'
+import { SHOW_PAINTINGS } from '@/lib/site'
 import { imageProps, objectPosition } from '@/sanity/image'
 import { getArtworks, getSettings } from '@/sanity/queries'
 import type { SanityImg } from '@/sanity/types'
@@ -12,12 +14,19 @@ import type { SanityImg } from '@/sanity/types'
 export const metadata: Metadata = {
   alternates: { canonical: '/shop' },
   title: 'Shop',
-  description:
-    'One-of-a-kind oil paintings, signed fine art prints, and commissions by Lara Berge.',
+  description: SHOW_PAINTINGS
+    ? 'One-of-a-kind oil paintings, signed fine art prints, and commissions by Lara Berge.'
+    : 'Signed fine art prints, commissions and art classes by Lara Berge.',
 }
 
 const STEPS = [
-  ['i', 'Choose your piece', 'An original, a print in your size, or a commission quote.'],
+  [
+    'i',
+    'Choose your piece',
+    SHOW_PAINTINGS
+      ? 'An original, a print in your size, or a commission quote.'
+      : 'A print in your size, or a commission quote.',
+  ],
   ['ii', 'Pay securely', 'Through PayFast, by card, Instant EFT or SnapScan.'],
   ['iii', 'Wrapped & sent', 'Packed by hand and couriered with tracking, in SA and abroad.'],
 ] as const
@@ -27,14 +36,24 @@ export default async function ShopPage() {
   const prices = artworks.flatMap((a) => (typeof a.printsFrom === 'number' ? [a.printsFrom] : []))
   const printsFrom = prices.length ? formatZAR(Math.min(...prices)) : 'R[price]'
 
-  const doors = [
-    {
-      href: '/shop/originals',
-      title: 'Original paintings',
-      text: 'The one and only. Oil on canvas, signed on the back.',
-      cta: 'browse originals',
-      image: s.shopOriginalsImage,
-    },
+  // While paintings are hidden, Classes takes the Originals door
+  const first: DoorInfo = SHOW_PAINTINGS
+    ? {
+        href: '/shop/originals',
+        title: 'Original paintings',
+        text: 'The one and only. Oil on canvas, signed on the back.',
+        cta: 'browse originals',
+        image: s.shopOriginalsImage,
+      }
+    : {
+        href: '/classes',
+        title: 'Classes',
+        text: 'Learn to paint or draw with me, online or in private lessons.',
+        cta: 'see the classes',
+        doodad: brand.doodads.catBooks,
+      }
+  const doors: DoorInfo[] = [
+    first,
     {
       href: '/shop/prints',
       title: 'Fine art prints',
@@ -47,20 +66,22 @@ export default async function ShopPage() {
       title: 'Commissions',
       text: 'Your idea, painted in oil or drawn digitally.',
       cta: 'start a commission',
-      image: s.shopCommissionsImage,
+      // Its chosen picture can be a hidden painting, so fall back to the digital commission one
+      image: s.shopCommissionsImage ?? s.commissionDigitalImage,
     },
   ]
 
   return (
     <>
       <section className="mx-auto max-w-[760px] px-6 pt-9 text-center">
-        <BranchSign image={brand.signs.shop} />
+        <BranchSign sign={brand.signs.shop} />
         <h1 className="mt-[30px] mb-2 font-display text-[36px] leading-[1.1] font-normal md:text-[44px]">
           Take a little world home
         </h1>
         <p className="mx-auto my-0 max-w-[540px] text-ink-soft">
-          One-of-a-kind oil paintings, signed fine art prints, and commissions made just for you.
-          Everything is wrapped by hand.
+          {SHOW_PAINTINGS
+            ? 'One-of-a-kind oil paintings, signed fine art prints, and commissions made just for you. Everything is wrapped by hand.'
+            : 'Signed fine art prints and commissions made just for you, all wrapped by hand. And if you would like to make your own, come and take a class.'}
         </p>
       </section>
 
@@ -72,7 +93,7 @@ export default async function ShopPage() {
               href={door.href}
               className="group flex flex-col gap-[18px] text-center"
             >
-              <Door image={door.image} />
+              <Door image={door.image} doodad={door.doodad} />
               <div>
                 <h2 className="m-0 font-display text-[28px] font-normal md:text-[32px]">
                   {door.title}
@@ -122,10 +143,29 @@ export default async function ShopPage() {
   )
 }
 
-function Door({ image }: { image?: SanityImg | null }) {
+type DoorInfo = {
+  href: string
+  title: string
+  text: string
+  cta: string
+  image?: SanityImg | null
+  /** A painted doodad on paper, for doors with no artwork (Classes) */
+  doodad?: StaticImageData
+}
+
+function Door({ image, doodad }: Pick<DoorInfo, 'image' | 'doodad'>) {
   return (
     <ArchFrame className="rounded-[200px_200px_3px_3px]">
-      {image ? (
+      {doodad ? (
+        <div className="flex aspect-[3/4] w-full items-end justify-center bg-paper pb-[14%]">
+          <Image
+            src={doodad}
+            alt=""
+            sizes="220px"
+            className="block h-auto w-[58%] transition-transform duration-800 ease-story group-hover:scale-105"
+          />
+        </div>
+      ) : image ? (
         <ArtImage
           {...imageProps(image, '')}
           sizes="(min-width: 1180px) 360px, (min-width: 768px) 30vw, 90vw"

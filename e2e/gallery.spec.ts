@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { SHOW_PAINTINGS } from '../src/lib/site'
 
 test('gallery tabs keep the collection in the URL', async ({ page }) => {
+  test.skip(!SHOW_PAINTINGS, 'no tabs while paintings are hidden')
   await page.goto('/gallery')
   await expect(page.getByRole('tab', { name: /Paintings/ })).toHaveAttribute(
     'aria-selected',
@@ -27,7 +29,7 @@ test('gallery tabs keep the collection in the URL', async ({ page }) => {
 
 test('lightbox opens over the gallery, steps through pieces and closes', async ({ page }) => {
   await page.goto('/gallery?tab=digital')
-  await page.getByRole('tabpanel').getByRole('link').nth(2).click()
+  await page.locator('main a[href^="/gallery/"]').nth(2).click()
   const viewer = page.getByRole('dialog', { name: 'Artwork viewer' })
   await expect(viewer).toBeVisible()
   await expect(page).toHaveURL(/\/gallery\/octopus$/)

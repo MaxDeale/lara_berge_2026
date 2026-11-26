@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <main className="relative min-h-dvh overflow-hidden bg-cream text-ink">
       <div className="pointer-events-none absolute -top-2.5 -left-10 w-[calc(100%+80px)] md:-top-5">
-        <Branch variant="wide" />
+        <Branch />
       </div>
       <Spider
         motion="drop"

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { ButtonLink } from '@/components/Button'
 import { OriginalsGrid } from '@/components/shop/OriginalsGrid'
 import { brand } from '@/lib/brand'
+import { SHOW_PAINTINGS } from '@/lib/site'
 import { getArtworks } from '@/sanity/queries'
 
 export const metadata: Metadata = {
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
 const MIN_TILES = 6
 
 export default async function OriginalsPage() {
+  if (!SHOW_PAINTINGS) notFound()
   const originals = (await getArtworks()).filter(
     (a) => a.kind === 'painting' && a.original?.forSale,
   )
@@ -35,8 +38,7 @@ export default async function OriginalsPage() {
               Original paintings
             </h1>
             <p className="mt-2 mb-0 max-w-[560px] text-ink-soft">
-              Each one exists exactly once. Oil on canvas, signed on the back, and sent with a
-              handwritten certificate of authenticity.
+              Take a one-of-a-kind signed oil painting home.
             </p>
           </div>
         }
@@ -47,10 +49,10 @@ export default async function OriginalsPage() {
           <Image src={brand.doodads.shroom} alt="" className="block h-auto w-[70px]" />
           <div>
             <h2 className="m-0 mb-1 font-display text-[26px] font-normal md:text-[28px]">
-              Missed the one you loved?
+              Miss out on an art piece?
             </h2>
             <p className="m-0 text-[17px] text-ink-soft">
-              Lara can paint something in the same spirit, just for you.
+              I can paint you something in the same spirit.
             </p>
           </div>
         </div>

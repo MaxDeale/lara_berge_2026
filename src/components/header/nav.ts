@@ -5,6 +5,7 @@ export const MAIN_NAV: NavItem[] = [
   { label: 'Gallery', href: '/gallery', matches: ['/gallery'] },
   // Commissions sits under Shop in the designs
   { label: 'Shop', href: '/shop', matches: ['/shop', '/commissions'] },
+  { label: 'Classes', href: '/classes', matches: ['/classes'] },
   { label: 'About', href: '/about', matches: ['/about'] },
   { label: 'Contact', href: '/contact', matches: ['/contact'] },
 ]

@@ -4,6 +4,7 @@ export const CONTACT_TOPICS = [
   'A painting or print',
   'Help with an order',
   'A commission',
+  'Classes or lessons',
   'Collaboration or press',
   'Just saying hello',
 ] as const

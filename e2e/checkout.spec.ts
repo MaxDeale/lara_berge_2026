@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { checkoutSignature } from '../src/lib/payfast/signature'
 import { TEST_ENV } from '../playwright.config'
+import { SHOW_PAINTINGS } from '../src/lib/site'
 
 // Reserves a real (test) original, so run once, not per viewport
 test.describe.configure({ mode: 'serial' })
@@ -9,6 +10,7 @@ test('add an original and a print, check out, and hand a signed payload to PayFa
   page,
 }, info) => {
   test.skip(info.project.name !== 'desktop', 'runs once')
+  test.skip(!SHOW_PAINTINGS, 'buys a painting original, and paintings are hidden')
 
   await page.goto('/shop/firefly')
   await page.getByRole('button', { name: 'Add to cart' }).click()
